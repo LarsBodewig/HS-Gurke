@@ -1,9 +1,18 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { AppGuard } from './app.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', loadChildren: './home/home.module#HomePageModule' },
+  /*{
+    path: '',
+    redirectTo: '', //cycle, guard
+    pathMatch: 'full',
+    // canActivate: [AppGuard]
+  },*/
+  {
+    path: 'login',
+    loadChildren: './login-module/login.module#LoginModule'
+  }
 ];
 
 @NgModule({
