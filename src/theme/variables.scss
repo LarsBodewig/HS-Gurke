@@ -74,4 +74,15 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  /** custom CSS variables **/
+  --background-dark: rgb(18, 18, 18);
+  --background-default: rgb(30, 29, 30);
+  --background-light: rgb(53, 52, 53);
+
+  --text-default: rgb(146, 146, 146);
+  --text-light: rgb(255, 255, 255);
+
+  --highlight-turquoise: rgb(47, 115, 111);
+  --highlight-orange: rgb(254, 147, 1);
 }
