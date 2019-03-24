@@ -1,40 +1,38 @@
-<div>
-  <ion-grid>
-    <form>
-      <ion-row align-items-center>
-        <ion-col>
-          <ion-label>Nutzername</ion-label>
-        </ion-col>
-        <ion-col>
-          <ion-input name="user"></ion-input>
-        </ion-col>
-      </ion-row>
-      <ion-row align-items-center>
-        <ion-col>
-          <ion-label>Passwort</ion-label>
-        </ion-col>
-        <ion-col>
-          <ion-input name="password"></ion-input>
-        </ion-col>
-      </ion-row>
-      <ion-row align-items-center>
-        <ion-col>
-          <ion-button expand="full" (click)="login()">
-            Login
-          </ion-button>
-        </ion-col>
-      </ion-row>
-    </form>
+<ion-grid>
+  <form>
     <ion-row align-items-center>
       <ion-col>
-        <ion-label>Password vergessen?</ion-label>
+        <ion-label>Nutzername</ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-input name="user"></ion-input>
       </ion-col>
     </ion-row>
     <ion-row align-items-center>
       <ion-col>
-        <ion-label>Noch kein Konto? </ion-label>
-        <ion-label (click)="switchComponent()" class="label-highlight">Hier registrieren</ion-label>
+        <ion-label>Passwort</ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-input name="password"></ion-input>
       </ion-col>
     </ion-row>
-  </ion-grid>
-</div>
+    <ion-row align-items-center>
+      <ion-col>
+        <ion-button expand="full" (click)="login()">
+          Login
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+  <ion-row align-items-center>
+    <ion-col>
+      <ion-label>Password vergessen?</ion-label>
+    </ion-col>
+  </ion-row>
+  <ion-row align-items-center>
+    <ion-col>
+      <ion-label>Noch kein Konto? </ion-label>
+      <ion-label (click)="switchComponent()" class="label-highlight">Hier registrieren</ion-label>
+    </ion-col>
+  </ion-row>
+</ion-grid>
