@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { PageComponent } from '../page/page.component';
 
 @Component({
   selector: 'register-component',
@@ -7,8 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
+  @Input() page: PageComponent;
+
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
+  register() { }
+
+  switchComponent() { this.page.mode = true; }
 }

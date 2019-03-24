@@ -1,11 +1,29 @@
-ion-label {
+ion-label,
+ion-input {
   color: var(--text-default);
 }
 
 ion-input {
   --background: var(--background-light);
+  height: 30px;
 }
 
 div {
   background: var(--background-default);
+  width: 378px;
+}
+
+.label-highlight {
+  color: var(--highlight-turquoise);
+}
+
+.label-highlight:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+ion-button {
+  --background: var(--highlight-turquoise);
+  --border-color: var(--highlight-turquoise);
+  --color: var(--text-light);
 }
