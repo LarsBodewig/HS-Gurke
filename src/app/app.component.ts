@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { RouteConfigLoadEnd, RouteConfigLoadStart, Router } from '@angular/router';
+import { NavigationEnd, RouteConfigLoadEnd, RouteConfigLoadStart, Router } from '@angular/router';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { Platform } from '@ionic/angular';
+import { Platform, MenuController } from '@ionic/angular';
 
 
 @Component({
@@ -17,7 +17,8 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private router: Router
+    private router: Router,
+    private menu: MenuController
   ) {
     this.initializeApp();
   }
@@ -27,12 +28,22 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
-    // test for landing
     this.router.events.subscribe(event => {
+
+      //test for landing
       if (event instanceof RouteConfigLoadStart) {
         this.loadingRouteConfig = true;
       } else if (event instanceof RouteConfigLoadEnd) {
         this.loadingRouteConfig = false;
+      }
+
+      // menü bei entry deaktivieren
+      if (event instanceof NavigationEnd) {
+        if (event.url === '/login' || event.url === '/register') {
+          this.menu.enable(false);
+        } else {
+          this.menu.enable(true);
+        }
       }
     });
 
