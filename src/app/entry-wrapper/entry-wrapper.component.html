@@ -3,11 +3,8 @@
     <ion-row justify-content-center align-items-center>
       <ion-col size="auto">
         <img src="assets/logo.png">
-        <div *ngIf="mode">
-          <login-component [page]="this"></login-component>
-        </div>
-        <div *ngIf="!mode">
-          <register-component [page]="this"></register-component>
+        <div>
+          <ng-content></ng-content>
         </div>
       </ion-col>
     </ion-row>

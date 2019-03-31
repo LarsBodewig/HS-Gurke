@@ -1,12 +1,12 @@
-<div>
+<entry-wrapper>
   <ion-grid>
     <form>
       <ion-row align-items-center>
         <ion-col>
-          <ion-label>E-Mail</ion-label>
+          <ion-label>Nutzername</ion-label>
         </ion-col>
         <ion-col>
-          <ion-input name="email"></ion-input>
+          <ion-input name="user"></ion-input>
         </ion-col>
       </ion-row>
       <ion-row align-items-center>
@@ -18,26 +18,23 @@
         </ion-col>
       </ion-row>
       <ion-row align-items-center>
-          <ion-col>
-            <ion-label>Passwort bestätigen</ion-label>
-          </ion-col>
-          <ion-col>
-            <ion-input name="password-verify"></ion-input>
-          </ion-col>
-        </ion-row>
-      <ion-row align-items-center>
         <ion-col>
-          <ion-button expand="full" (click)="register()">
-            Registrieren
+          <ion-button expand="full" (click)="login()">
+            Login
           </ion-button>
         </ion-col>
       </ion-row>
     </form>
     <ion-row align-items-center>
       <ion-col>
-        <ion-label>Schon ein Konto? </ion-label>
-        <ion-label (click)="switchComponent()" class="label-highlight">Hier anmelden</ion-label>
+        <ion-label>Password vergessen?</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col>
+        <ion-label>Noch kein Konto? </ion-label>
+        <ion-label (click)="navigateRegister()" class="label-highlight">Hier registrieren</ion-label>
       </ion-col>
     </ion-row>
   </ion-grid>
-</div>
+</entry-wrapper>
