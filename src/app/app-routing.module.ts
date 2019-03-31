@@ -1,18 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppGuard } from './app.guard';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: '', //cycle, guard
+    path: 'login',
     pathMatch: 'full',
-    // canActivate: [AppGuard]
+    component: LoginComponent,
+    canActivate: [AppGuard]
   },
   {
-    path: 'login',
-    loadChildren: './login-module/login.module#LoginModule'
-  }
+    path: 'register',
+    pathMatch: 'full',
+    component: RegisterComponent,
+    canActivate: [AppGuard]
+  },
 ];
 
 @NgModule({
