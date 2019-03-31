@@ -7,15 +7,19 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EntryWrapperComponent } from './entry-wrapper/entry-wrapper.component';
+import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { SidemenuComponent } from './sidemenu/sidemenu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    EntryWrapperComponent
+    EntryWrapperComponent,
+    HomeComponent,
+    SidemenuComponent
   ],
   entryComponents: [],
   imports: [
