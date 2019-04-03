@@ -14,6 +14,7 @@ export class AppGuard implements CanActivate, CanActivateChild, CanLoad {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    //TODO route prüfen: /login bei user -> home, /home ohne user -> login
     return true;
   }
 
