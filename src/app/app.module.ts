@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { SidemenuComponent } from './sidemenu/sidemenu.component';
+import { ExploreComponent } from './explore/explore.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SidemenuComponent } from './sidemenu/sidemenu.component';
     RegisterComponent,
     EntryWrapperComponent,
     HomeComponent,
-    SidemenuComponent
+    SidemenuComponent,
+    ExploreComponent
   ],
   entryComponents: [],
   imports: [

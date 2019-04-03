@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'sidemenu',
@@ -7,8 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidemenuComponent implements OnInit {
 
-  constructor() { }
+  public headerItems: { title: string, url: string }[];
+  public customItems: {}; //TODO folder?
 
-  ngOnInit() {}
+  constructor(
+    private router: NavController
+  ) {
+    this.headerItems = [
+      {
+        title: 'Home',
+        url: '/home'
+      },
+      {
+        title: 'Explore',
+        url: '/explore'
+      },
+      {
+        title: 'In deiner Nähe',
+        url: '/nearby'
+      }];
+  }
+
+  ngOnInit() { }
 
 }

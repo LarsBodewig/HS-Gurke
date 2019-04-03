@@ -1,10 +1,9 @@
 <ion-app>
-  <ion-split-pane contentId="menu-content">
-    <ion-menu side="start" contentId="menu-content">
-      <ion-content>
-        <sidemenu></sidemenu>
-      </ion-content>
+  <ion-split-pane no-shadow>
+    <!-- TODO max width -->
+    <ion-menu side="start" swipeGesture="false" type="push">
+      <sidemenu></sidemenu>
     </ion-menu>
-    <ion-router-outlet id="menu-content"></ion-router-outlet>
+    <ion-router-outlet main></ion-router-outlet>
   </ion-split-pane>
 </ion-app>

@@ -30,7 +30,7 @@ export class AppComponent {
     });
     this.router.events.subscribe(event => {
 
-      //test for landing
+      // test for landing
       if (event instanceof RouteConfigLoadStart) {
         this.loadingRouteConfig = true;
       } else if (event instanceof RouteConfigLoadEnd) {
