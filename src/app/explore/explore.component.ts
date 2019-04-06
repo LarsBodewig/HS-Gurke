@@ -9,6 +9,6 @@ export class ExploreComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
 }

@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { NavigationEnd, RouteConfigLoadEnd, RouteConfigLoadStart, Router } from '@angular/router';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { Platform, MenuController } from '@ionic/angular';
+import { Platform } from '@ionic/angular';
+import { RoutingService } from './services/routing.service';
+import { SidemenuComponent } from './sidemenu/sidemenu.component';
 
 
 @Component({
@@ -12,13 +13,13 @@ import { Platform, MenuController } from '@ionic/angular';
 export class AppComponent {
 
   public loadingRouteConfig: boolean;
+  public menuComponent: SidemenuComponent;
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private router: Router,
-    private menu: MenuController
+    private routing: RoutingService
   ) {
     this.initializeApp();
   }
@@ -28,24 +29,6 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
-    this.router.events.subscribe(event => {
-
-      // test for landing
-      if (event instanceof RouteConfigLoadStart) {
-        this.loadingRouteConfig = true;
-      } else if (event instanceof RouteConfigLoadEnd) {
-        this.loadingRouteConfig = false;
-      }
-
-      // menü bei entry deaktivieren
-      if (event instanceof NavigationEnd) {
-        if (event.url === '/login' || event.url === '/register') {
-          this.menu.enable(false);
-        } else {
-          this.menu.enable(true);
-        }
-      }
-    });
-
+    this.routing.register();
   }
 }

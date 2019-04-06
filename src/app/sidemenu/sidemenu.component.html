@@ -1,14 +1,12 @@
 <ion-header no-border>
-    <!-- move style to scss -->
+  <!-- move style to scss -->
   <img src="assets/logo.png"
     style="display: block;margin-left: auto;margin-right: auto;padding-bottom: 60px;height: 150px;">
   <ion-list>
     <ion-item *ngFor="let item of headerItems" lines="none" style="height: 30px">
-        <!-- navigateMethod instead of routerLink -->
-        <!-- remove blue border when clicked -->
-        <!-- auto-close when navigating -->
-        <!-- text highlight color when clicked (also hover?) -->
-      <ion-label style="margin-top: 0px;color: var(--text-default);" routerLink="{{item.url}}" routerDirection="root">
+      <!-- text highlight color when clicked (also hover?) -->
+      <ion-label class="header-item" [ngClass]="{'active-header-item': routing.url === item.url}"
+        style="margin-top: 0px;" (click)="navigateItem(item.url)">
         {{item.title}}</ion-label>
     </ion-item>
   </ion-list>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { RoutingService } from '../services/routing.service';
 
 @Component({
   selector: 'login',
@@ -9,12 +9,12 @@ import { NavController } from '@ionic/angular';
 export class LoginComponent implements OnInit {
 
   constructor(
-    private router: NavController
+    private routing: RoutingService
   ) { }
 
   ngOnInit() { }
 
   navigateRegister() {
-    this.router.navigateRoot('/register');
+    this.routing.navigate('root', '/register');
   }
 }
