@@ -9,6 +9,6 @@ export class EntryWrapperComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { MenuController } from '@ionic/angular';
+import { RoutingService } from '../services/routing.service';
 
 @Component({
   selector: 'sidemenu',
@@ -12,7 +13,9 @@ export class SidemenuComponent implements OnInit {
   public customItems: {}; //TODO folder?
 
   constructor(
-    private router: NavController
+    private menu: MenuController,
+    private routing: RoutingService
+
   ) {
     this.headerItems = [
       {
@@ -31,4 +34,8 @@ export class SidemenuComponent implements OnInit {
 
   ngOnInit() { }
 
+  navigateItem(url: string) {
+    this.routing.navigate('root', url);
+    this.menu.close();
+  }
 }
