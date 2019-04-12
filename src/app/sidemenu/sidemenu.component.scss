@@ -1,7 +1,8 @@
-.header-item {
-    --color: var(--text-default);
+.header-item,
+.custom-item {
+  --color: var(--text-default);
 }
 
 .active-header-item {
-    --color: var(--highlight-turquoise);
+  --color: var(--highlight-turquoise);
 }

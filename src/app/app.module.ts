@@ -12,6 +12,8 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { SidemenuComponent } from './sidemenu/sidemenu.component';
+import { TopicComponent } from './topic/topic.component';
+import { NearbyComponent } from './nearby/nearby.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { SidemenuComponent } from './sidemenu/sidemenu.component';
     EntryWrapperComponent,
     HomeComponent,
     SidemenuComponent,
-    ExploreComponent
+    ExploreComponent,
+    NearbyComponent,
+    TopicComponent
   ],
   entryComponents: [],
   imports: [

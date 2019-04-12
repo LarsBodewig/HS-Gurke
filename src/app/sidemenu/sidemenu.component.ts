@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
+import { MenuFolder } from '../models/menu-folder';
 import { RoutingService } from '../services/routing.service';
 
 @Component({
@@ -9,33 +10,64 @@ import { RoutingService } from '../services/routing.service';
 })
 export class SidemenuComponent implements OnInit {
 
-  public headerItems: { title: string, url: string }[];
-  public customItems: {}; //TODO folder?
+  public headerItems: {
+    title: string,
+    url: string
+  }[];
+  public menuFolder: Array<MenuFolder>;
 
   constructor(
     private menu: MenuController,
     private routing: RoutingService
-
   ) {
     this.headerItems = [
       {
         title: 'Home',
-        url: '/home'
+        url: 'home'
       },
       {
         title: 'Explore',
-        url: '/explore'
+        url: 'explore'
       },
       {
         title: 'In deiner Nähe',
-        url: '/nearby'
-      }];
+        url: 'nearby'
+      }
+    ];
+    this.menuFolder = [
+      new MenuFolder({
+        title: 'First', url: 'first', items: [
+          { title: 'Facebook', fragment: 'facebook', source: '' }
+        ]
+      }),
+      new MenuFolder({
+        title: 'Second', url: 'second', items: [
+          { title: 'Facebook', fragment: 'facebook', source: '' },
+          { title: 'Twitter', fragment: 'twitter', source: '' },
+          { title: 'Insta', fragment: 'instagram', source: '' }
+        ]
+      }),
+      new MenuFolder({
+        title: 'Third', url: 'third', items: [
+          { title: 'Youtube', fragment: 'youtube', source: '' }
+        ]
+      })
+    ]
   }
 
   ngOnInit() { }
 
-  navigateItem(url: string) {
-    this.routing.navigate('root', url);
+  navigate(url: string, fragment?: string) {
+    this.routing.navigate('root', url, { fragment: fragment }).then(() => {
+      if (fragment) {
+        const anchor: Element = document.querySelector('#' + fragment);
+        if (anchor) {
+          anchor.scrollIntoView();
+        } else {
+          this.navigate(url);
+        }
+      }
+    });
     this.menu.close();
   }
 }
