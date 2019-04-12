@@ -5,6 +5,8 @@ import { ExploreComponent } from './explore/explore.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { TopicComponent } from './topic/topic.component';
+import { NearbyComponent } from './nearby/nearby.component';
 
 const routes: Routes = [
   {
@@ -37,8 +39,14 @@ const routes: Routes = [
     canActivate: [AppGuard],
   },
   {
-    path: ':id',
-    redirectTo: 'home'
+    path: 'nearby',
+    pathMatch: 'full',
+    component: NearbyComponent,
+    canActivate: [AppGuard],
+  },
+  {
+    path: ':topic',
+    component: TopicComponent
   }
 ];
 
