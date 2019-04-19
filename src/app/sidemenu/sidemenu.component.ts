@@ -58,16 +58,7 @@ export class SidemenuComponent implements OnInit {
   ngOnInit() { }
 
   navigate(url: string, fragment?: string) {
-    this.routing.navigate('root', url, { fragment: fragment }).then(() => {
-      if (fragment) {
-        const anchor: Element = document.querySelector('#' + fragment);
-        if (anchor) {
-          anchor.scrollIntoView();
-        } else {
-          this.navigate(url);
-        }
-      }
-    });
+    this.routing.navigate('root', url, { fragment: fragment });
     this.menu.close();
   }
 }

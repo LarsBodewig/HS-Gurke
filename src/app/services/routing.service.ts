@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NavigationEnd, RouteConfigLoadEnd, RouteConfigLoadStart, Router } from '@angular/router';
+import { NavigationEnd, RouteConfigLoadEnd, RouteConfigLoadStart, Router, UrlTree } from '@angular/router';
 import { MenuController, NavController } from '@ionic/angular';
 import { NavigationOptions } from '@ionic/angular/dist/providers/nav-controller';
 
@@ -25,9 +25,10 @@ export class RoutingService {
         this.toggleLandingPage(false);
       }
       if (event instanceof NavigationEnd) {
-        this.changeUrl(event.urlAfterRedirects);
-        this.changeFragment(event.urlAfterRedirects);
-        this.enableMenu(event.urlAfterRedirects);
+        const tree: UrlTree = this.router.parseUrl(event.urlAfterRedirects);
+        this.changeUrl(tree.root.children['primary'].segments.join('/'));
+        this.changeFragment(tree.fragment);
+        this.enableMenu(this.url);
       }
     });
   }
@@ -44,15 +45,15 @@ export class RoutingService {
     }
   }
 
-  changeFragment(url: string) {
-    this.fragment = this.router.parseUrl(url).fragment;
+  changeFragment(fragment: string) {
+    this.fragment = fragment;
   }
 
   changeUrl(url: string) {
-    this.url = this.router.parseUrl(url).root.children['primary'].segments.join('/');
+    this.url = url;
   }
 
-  public navigate(direction: string, url: string, options?: NavigationOptions): Promise<String> {
+  public async navigate(direction: string, url: string, options?: NavigationOptions): Promise<String> {
     let resolve: Promise<Boolean>;
     switch (direction.toLowerCase()) {
       case 'root': resolve = this.nav.navigateRoot([url], options); break;
@@ -60,8 +61,7 @@ export class RoutingService {
       case 'back': resolve = this.nav.navigateBack([url], options); break;
       default: return Promise.reject('Invalid navigation direction: ' + direction + '. Use "root", "forward" or "back".');
     }
-    return resolve.then(() => {
-      return Promise.resolve(this.url);
-    });
+    await resolve;
+    return Promise.resolve(this.url);
   }
 }
