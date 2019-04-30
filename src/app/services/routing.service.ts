@@ -53,6 +53,12 @@ export class RoutingService {
     this.url = url;
   }
 
+  public async goBack() {
+    //oder location.back, falls pop zu weit geht
+    //nav.canGoBack() trotz Doku nicht vorhanden
+    return await this.nav.pop();
+  }
+
   public async navigate(direction: string, url: string, options?: NavigationOptions): Promise<String> {
     let resolve: Promise<Boolean>;
     switch (direction.toLowerCase()) {

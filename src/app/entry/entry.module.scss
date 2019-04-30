@@ -1,0 +1,36 @@
+.text-hyperlink {
+  color: var(--highlight-turquoise);
+
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+.text-default {
+  color: var(--text-default);
+}
+
+.text-light {
+  --color: var(--text-light);
+}
+
+.button-turquoise {
+  --background: var(--highlight-turquoise);
+  --border-color: var(--highlight-turquoise);
+}
+
+.button-orange {
+  --background: var(--highlight-orange);
+  --border-color: var(--highlight-orange);
+}
+
+.button-red {
+  --background: var(--highlight-red);
+  --border-color: var(--highlight-red);
+}
+
+.input-default {
+  --background: var(--background-light);
+  height: 30px;
+}
