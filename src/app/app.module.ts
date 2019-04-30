@@ -6,21 +6,27 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EntryWrapperComponent } from './entry-wrapper/entry-wrapper.component';
+import { EntryModule } from './entry/entry.module';
 import { ExploreComponent } from './explore/explore.component';
 import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { NearbyComponent } from './nearby/nearby.component';
 import { SidemenuComponent } from './sidemenu/sidemenu.component';
 import { TopicComponent } from './topic/topic.component';
-import { NearbyComponent } from './nearby/nearby.component';
 
 @NgModule({
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    EntryModule
+  ],
+  providers: [
+    StatusBar,
+    SplashScreen,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+  ],
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegisterComponent,
-    EntryWrapperComponent,
     HomeComponent,
     SidemenuComponent,
     ExploreComponent,
@@ -28,16 +34,6 @@ import { NearbyComponent } from './nearby/nearby.component';
     TopicComponent
   ],
   entryComponents: [],
-  imports: [
-    BrowserModule,
-    IonicModule.forRoot(),
-    AppRoutingModule
-  ],
-  providers: [
-    StatusBar,
-    SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
-  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

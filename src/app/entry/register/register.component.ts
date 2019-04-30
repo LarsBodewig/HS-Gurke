@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { RoutingService } from '../services/routing.service';
+import { RoutingService } from 'src/app/services/routing.service';
 
 @Component({
   selector: 'register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss'],
+  styleUrls: ['../entry.module.scss'],
 })
 export class RegisterComponent implements OnInit {
 
@@ -17,4 +17,6 @@ export class RegisterComponent implements OnInit {
   navigateLogin() {
     this.routing.navigate('root', '/login');
   }
+
+  register() { }
 }

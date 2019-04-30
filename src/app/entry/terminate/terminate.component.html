@@ -1,0 +1,36 @@
+<entry-wrapper>
+  <ion-grid>
+    <form>
+      <ion-row align-items-center>
+        <ion-col>
+          <ion-label class="text-default">E-Mail</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-input class="text-default input-default" name="email" type="email"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col>
+          <ion-label class="text-default">Sicherheitscode</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-input class="text-default input-default" name="code" type="text"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col>
+          <ion-button class="button-red text-light" expand="full" (click)="terminate()">
+            Löschen
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col>
+          <ion-button class="button-turquoise text-light" expand="full" (click)="cancel()">
+            Abbrechen
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-grid>
+</entry-wrapper>

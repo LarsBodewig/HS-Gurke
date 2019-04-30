@@ -1,9 +1,8 @@
-ion-grid,
-ion-row {
+.full-height {
   height: 100%;
 }
 
-img {
+#logo-center {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -11,13 +10,7 @@ img {
   height: 150px;
 }
 
-// still in use?
-.wrapper-background {
-  background: var(--background-default);
-  width: 378px;
-}
-
-div {
+#content-encapsulation {
   background: var(--background-default);
   width: 378px;
 }

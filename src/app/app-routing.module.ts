@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppGuard } from './app.guard';
+import { LoginComponent } from './entry/login/login.component';
+import { RecoverComponent } from './entry/recover/recover.component';
+import { RegisterComponent } from './entry/register/register.component';
+import { TerminateComponent } from './entry/terminate/terminate.component';
 import { ExploreComponent } from './explore/explore.component';
 import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { TopicComponent } from './topic/topic.component';
 import { NearbyComponent } from './nearby/nearby.component';
+import { TopicComponent } from './topic/topic.component';
 
 const routes: Routes = [
   {
@@ -19,6 +21,18 @@ const routes: Routes = [
     path: 'register',
     pathMatch: 'full',
     component: RegisterComponent,
+    canActivate: [AppGuard]
+  },
+  {
+    path: 'recover',
+    pathMatch: 'full',
+    component: RecoverComponent,
+    canActivate: [AppGuard]
+  },
+  {
+    path: 'terminate',
+    pathMatch: 'full',
+    component: TerminateComponent,
     canActivate: [AppGuard]
   },
   {

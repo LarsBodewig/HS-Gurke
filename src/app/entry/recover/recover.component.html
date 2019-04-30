@@ -1,0 +1,57 @@
+<entry-wrapper>
+  <ion-grid>
+    <form>
+      <ion-row align-items-center>
+        <ion-col>
+          <ion-label class="text-default">E-Mail</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-input class="text-default input-default" name="email" type="email"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col>
+          <ion-label class="text-default">Sicherheitscode</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-input class="text-default input-default" name="code" type="text"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col>
+          <ion-label class="text-default">Neues Passwort</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-input class="text-default input-default" name="password" type="password"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col>
+          <ion-label class="text-default">Neues Passwort bestätigen</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-input class="text-default input-default" name="password-verify" type="password"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row align-items-center>
+        <ion-col>
+          <ion-button class="button-orange text-light" expand="full" (click)="recover()">
+            Zurücksetzen
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+    <ion-row align-items-center>
+      <ion-col>
+        <ion-label class="text-default">Password eingefallen? </ion-label>
+        <ion-label class="text-hyperlink" (click)="navigateLogin()">Hier anmelden</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row align-items-center>
+      <ion-col>
+        <ion-label class="text-default">Noch kein Konto? </ion-label>
+        <ion-label class="text-hyperlink" (click)="navigateRegister()">Hier registrieren</ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</entry-wrapper>
