@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountService } from 'src/app/services/account.service';
 import { RoutingService } from 'src/app/services/routing.service';
 
 @Component({
@@ -9,7 +10,8 @@ import { RoutingService } from 'src/app/services/routing.service';
 export class TerminateComponent implements OnInit {
 
   constructor(
-    private routing: RoutingService
+    private routing: RoutingService,
+    private account: AccountService
   ) { }
 
   ngOnInit() { }

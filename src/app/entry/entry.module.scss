@@ -34,3 +34,9 @@
   --background: var(--background-light);
   height: 30px;
 }
+
+// TODO: dialog styling
+.dialog .alert-wrapper{
+  background: var(--background-default);
+  color: var(--text-default);
+}

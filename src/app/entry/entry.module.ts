@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { AccountService } from '../services/account.service';
 import { RoutingService } from '../services/routing.service';
 import { EntryWrapperComponent } from './entry-wrapper/entry-wrapper.component';
 import { LoginComponent } from './login/login.component';
@@ -11,10 +13,12 @@ import { TerminateComponent } from './terminate/terminate.component';
 @NgModule({
   imports: [
     CommonModule,
-    IonicModule
+    IonicModule,
+    ReactiveFormsModule
   ],
   providers: [
-    RoutingService
+    RoutingService,
+    AccountService
   ],
   declarations: [
     EntryWrapperComponent,

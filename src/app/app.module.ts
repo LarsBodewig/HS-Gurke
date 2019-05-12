@@ -10,6 +10,7 @@ import { EntryModule } from './entry/entry.module';
 import { ExploreComponent } from './explore/explore.component';
 import { HomeComponent } from './home/home.component';
 import { NearbyComponent } from './nearby/nearby.component';
+import { AccountService } from './services/account.service';
 import { SidemenuComponent } from './sidemenu/sidemenu.component';
 import { TopicComponent } from './topic/topic.component';
 
@@ -23,7 +24,8 @@ import { TopicComponent } from './topic/topic.component';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    AccountService
   ],
   declarations: [
     AppComponent,
