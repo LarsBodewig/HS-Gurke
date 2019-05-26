@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { MenuFolder } from '../models/menu-folder';
+import { AccountService } from '../services/account.service';
 import { RoutingService } from '../services/routing.service';
 
 @Component({
@@ -18,7 +19,8 @@ export class SidemenuComponent implements OnInit {
 
   constructor(
     private menu: MenuController,
-    private routing: RoutingService
+    private routing: RoutingService,
+    private account: AccountService
   ) {
     this.headerItems = [
       {
@@ -34,25 +36,12 @@ export class SidemenuComponent implements OnInit {
         url: 'nearby'
       }
     ];
-    this.menuFolder = [
-      new MenuFolder({
-        title: 'First', url: 'first', items: [
-          { title: 'Facebook', fragment: 'facebook', source: '' }
-        ]
-      }),
-      new MenuFolder({
-        title: 'Second', url: 'second', items: [
-          { title: 'Facebook', fragment: 'facebook', source: '' },
-          { title: 'Twitter', fragment: 'twitter', source: '' },
-          { title: 'Insta', fragment: 'instagram', source: '' }
-        ]
-      }),
-      new MenuFolder({
-        title: 'Third', url: 'third', items: [
-          { title: 'Youtube', fragment: 'youtube', source: '' }
-        ]
-      })
-    ]
+    this.menuFolder = [];
+    this.account.onUpdate().subscribe(() => {
+      this.menuFolder = <MenuFolder[]>this.account.getPages().filter(entry => {
+        return entry instanceof MenuFolder;
+      });
+    });
   }
 
   ngOnInit() { }
