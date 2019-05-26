@@ -37,6 +37,11 @@ export class LoginComponent implements OnInit {
     this.routing.navigate('root', recoverRoute);
   }
 
+  private navigateRedirect(url: string) {
+    this.routing.navigate('forward', url);
+    this.account.clearRedirect();
+  }
+
   private navigateHome() {
     const homeRoute: string = '/home';
     this.routing.navigate('root', homeRoute);
@@ -62,19 +67,22 @@ export class LoginComponent implements OnInit {
   }
 
   async onLogin() {
-    await this.getFormData().then((formData: { email: string, password: string }) => {
-      return this.account.login(formData);
-    }).then((granted: boolean) => {
-      if (!granted) {
-        return Promise.reject('E-Mail oder Password falsch.');
-      }
-      this.navigateHome();
-    }, (reason: any) => {
-      console.log(reason);
-      return Promise.reject('Leider ist ein Fehler bei der Anmeldung aufgetreten.');
-    }).catch((reason: any) => {
-      return this.showAlert(reason);
-    });
+    await this.getFormData()
+      .then((formData: { email: string, password: string }): Promise<{ granted: boolean, redirect?: string, reason?: string }> => {
+        return this.account.login(formData);
+      })
+      .then((resolve: { granted: boolean, redirect?: string, reason?: string }): Promise<void> => {
+        if (!resolve.granted) {
+          return Promise.reject(resolve.reason ? resolve.reason : 'E-Mail oder Password falsch.');
+        }
+        if(resolve.redirect){
+          return Promise.resolve(this.navigateRedirect(resolve.redirect));
+        }
+        return Promise.resolve(this.navigateHome());
+      })
+      .catch((reason: any): Promise<void> => {
+        return this.showAlert(reason);
+      });
   }
 
   private async showAlert(text: string): Promise<void> {

@@ -1,39 +1,40 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppGuard } from './app.guard';
 import { LoginComponent } from './entry/login/login.component';
 import { RecoverComponent } from './entry/recover/recover.component';
 import { RegisterComponent } from './entry/register/register.component';
 import { TerminateComponent } from './entry/terminate/terminate.component';
 import { ExploreComponent } from './explore/explore.component';
+import { LoginGuard } from './guards/login.guard';
 import { HomeComponent } from './home/home.component';
 import { NearbyComponent } from './nearby/nearby.component';
 import { TopicComponent } from './topic/topic.component';
+import { TopicGuard } from './guards/topic.guard';
 
 const routes: Routes = [
   {
     path: 'login',
     pathMatch: 'full',
     component: LoginComponent,
-    canActivate: [AppGuard]
+    canActivate: [LoginGuard]
   },
   {
     path: 'register',
     pathMatch: 'full',
     component: RegisterComponent,
-    canActivate: [AppGuard]
+    canActivate: [LoginGuard]
   },
   {
     path: 'recover',
     pathMatch: 'full',
     component: RecoverComponent,
-    canActivate: [AppGuard]
+    canActivate: [LoginGuard]
   },
   {
     path: 'terminate',
     pathMatch: 'full',
     component: TerminateComponent,
-    canActivate: [AppGuard]
+    canActivate: [LoginGuard]
   },
   {
     path: '',
@@ -44,23 +45,24 @@ const routes: Routes = [
     path: 'home',
     pathMatch: 'full',
     component: HomeComponent,
-    canActivate: [AppGuard],
+    canActivate: [LoginGuard],
   },
   {
     path: 'explore',
     pathMatch: 'full',
     component: ExploreComponent,
-    canActivate: [AppGuard],
+    canActivate: [LoginGuard],
   },
   {
     path: 'nearby',
     pathMatch: 'full',
     component: NearbyComponent,
-    canActivate: [AppGuard],
+    canActivate: [LoginGuard],
   },
   {
     path: ':topic',
-    component: TopicComponent
+    component: TopicComponent,
+    canActivate: [LoginGuard, TopicGuard],
   }
 ];
 
