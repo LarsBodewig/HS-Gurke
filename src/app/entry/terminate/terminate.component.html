@@ -19,16 +19,12 @@
       </ion-row>
       <ion-row align-items-center>
         <ion-col>
-          <ion-button class="button-red text-light" expand="full" type="submit">
-            Löschen
-          </ion-button>
+          <ion-button class="button-red text-light" expand="full" type="submit" [disabled]="terminateForm.invalid">Löschen</ion-button>
         </ion-col>
       </ion-row>
       <ion-row align-items-center>
         <ion-col>
-          <ion-button class="button-turquoise text-light" expand="full" (click)="cancel()">
-            Abbrechen
-          </ion-button>
+          <ion-button class="button-turquoise text-light" expand="full" (click)="cancel()">Abbrechen</ion-button>
         </ion-col>
       </ion-row>
     </form>
