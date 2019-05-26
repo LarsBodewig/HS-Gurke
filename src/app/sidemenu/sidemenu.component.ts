@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { MenuFolder } from '../models/menu-folder';
+import { AccountService } from '../services/account.service';
 import { RoutingService } from '../services/routing.service';
 
 @Component({
@@ -18,7 +19,8 @@ export class SidemenuComponent implements OnInit {
 
   constructor(
     private menu: MenuController,
-    private routing: RoutingService
+    private routing: RoutingService,
+    private account: AccountService
   ) {
     this.headerItems = [
       {

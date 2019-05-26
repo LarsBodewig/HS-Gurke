@@ -13,56 +13,55 @@ import { TopicGuard } from './guards/topic.guard';
 
 const routes: Routes = [
   {
-    path: 'login',
-    pathMatch: 'full',
-    component: LoginComponent,
-    canActivate: [LoginGuard]
-  },
-  {
-    path: 'register',
-    pathMatch: 'full',
-    component: RegisterComponent,
-    canActivate: [LoginGuard]
-  },
-  {
-    path: 'recover',
-    pathMatch: 'full',
-    component: RecoverComponent,
-    canActivate: [LoginGuard]
-  },
-  {
-    path: 'terminate',
-    pathMatch: 'full',
-    component: TerminateComponent,
-    canActivate: [LoginGuard]
-  },
-  {
     path: '',
-    pathMatch: 'full',
-    redirectTo: 'home'
-  },
-  {
-    path: 'home',
-    pathMatch: 'full',
-    component: HomeComponent,
     canActivate: [LoginGuard],
-  },
-  {
-    path: 'explore',
-    pathMatch: 'full',
-    component: ExploreComponent,
-    canActivate: [LoginGuard],
-  },
-  {
-    path: 'nearby',
-    pathMatch: 'full',
-    component: NearbyComponent,
-    canActivate: [LoginGuard],
-  },
-  {
-    path: ':topic',
-    component: TopicComponent,
-    canActivate: [LoginGuard, TopicGuard],
+    children: [
+      {
+        path: 'login',
+        pathMatch: 'full',
+        component: LoginComponent
+      },
+      {
+        path: 'register',
+        pathMatch: 'full',
+        component: RegisterComponent
+      },
+      {
+        path: 'recover',
+        pathMatch: 'full',
+        component: RecoverComponent
+      },
+      {
+        path: 'terminate',
+        pathMatch: 'full',
+        component: TerminateComponent
+      },
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'home'
+      },
+      {
+        path: 'home',
+        pathMatch: 'full',
+        component: HomeComponent
+      },
+      {
+        path: 'explore',
+        pathMatch: 'full',
+        component: ExploreComponent
+      },
+      {
+        path: 'nearby',
+        pathMatch: 'full',
+        component: NearbyComponent
+      },
+      {
+        path: ':topic',
+        component: TopicComponent,
+        canActivate: [TopicGuard],
+      }
+    ]
   }
 ];
 
