@@ -8,7 +8,7 @@ export interface Post {
   comments: number;
   source: string;
 }
-}
+
   /*equals(post: Post): boolean {
 
     return this.author === post.author
@@ -20,8 +20,3 @@ export interface Post {
       && this.comments === post.comments
       && this.source === post.source;
   }*/
-
-  public get() {
-
-  }
-}
