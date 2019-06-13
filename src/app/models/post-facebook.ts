@@ -2,7 +2,7 @@ export interface Post {
   author: string;
   avi: string;
   post: string;
-  timestamp: date;
+  timestamp: Date;
   likes: number;
   photo: string;
   comments: number;
