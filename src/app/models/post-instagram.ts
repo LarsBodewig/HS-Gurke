@@ -3,7 +3,7 @@ export interface Post {
   avi: string;
   post: string;
   caption: string;
-  timestamp: date;
+  timestamp: Date;
   likes: number;
   comments: number;
   source: string;
