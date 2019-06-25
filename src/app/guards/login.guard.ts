@@ -17,14 +17,16 @@ export class LoginGuard implements CanActivate, CanActivateChild, CanLoad {
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const homeRoute: string = '/home';
     const loginRoute: string = '/login';
+    const registerRoute: string = '/register';
+    const recoverRoute: string = '/recover';
 
     const url = state.url;
     const loggedIn = this.account.isLoggedIn();
 
-    if (url === loginRoute && loggedIn) {
+    if ((url === loginRoute || url === registerRoute || url === recoverRoute) && loggedIn) {
       this.routing.navigate('root', homeRoute);
       return false;
-    } else if (url !== loginRoute && !loggedIn) {
+    } else if (url !== loginRoute && url !== registerRoute && url !== recoverRoute && !loggedIn) {
       this.account.setRedirect(url);
       this.routing.navigate('root', loginRoute);
       return false;
