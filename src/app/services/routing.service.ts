@@ -38,10 +38,7 @@ export class RoutingService {
   }
 
   enableMenu(url: string) {
-    if (url === 'login'
-      || url === 'register'
-      || url === 'recover'
-      || url === 'terminate') {
+    if (url === 'login' || url === 'register') {
       this.menu.enable(false);
     } else {
       this.menu.enable(true);
