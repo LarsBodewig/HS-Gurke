@@ -11,7 +11,7 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 :root {
-  --ion-background-color: var(--background-dark);
+  --ion-background-color: var(--background-darkmode-dark);
 }
 
 entry-wrapper {
@@ -19,11 +19,11 @@ entry-wrapper {
 }
 
 ion-menu-button, ion-label {
-  color: var(--text-default);
+  color: var(--text-darkmode-default);
 }
 
 .page-content {
-  background: var(--background-default);
+  background: var(--background-darkmode-default);
   height: 100%;
   padding: 50px 20px;
 }
