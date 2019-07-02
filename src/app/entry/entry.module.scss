@@ -8,11 +8,11 @@
 }
 
 .text-default {
-  color: var(--text-default);
+  color: var(--text-darkmode-default);
 }
 
 .text-light {
-  --color: var(--text-light);
+  --color: var(--text-darkmode-light);
 }
 
 .button-turquoise {
@@ -31,12 +31,12 @@
 }
 
 .input-default {
-  --background: var(--background-light);
+  --background: var(--background-darkmode-light);
   height: 30px;
 }
 
 // TODO: dialog styling
 .dialog .alert-wrapper{
-  background: var(--background-default);
-  color: var(--text-default);
+  background: var(--background-darkmode-default);
+  color: var(--text-darkmode-default);
 }
