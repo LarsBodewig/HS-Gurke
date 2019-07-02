@@ -18,6 +18,12 @@ entry-wrapper {
   height: 100%;
 }
 
-ion-menu-button {
+ion-menu-button, ion-label {
   color: var(--text-default);
+}
+
+.page-content {
+  background: var(--background-default);
+  height: 100%;
+  padding: 50px 20px;
 }
