@@ -82,18 +82,20 @@
   --highlight-red: rgb(217, 0, 0);
 
   /** darkmode **/
-  --background-darkmode-dark: rgb(18, 18, 18);
-  --background-darkmode-default: rgb(30, 30, 30);
-  --background-darkmode-light: rgb(50, 50, 50);
+  --background-dark: rgb(18, 18, 18);
+  --background-default: rgb(30, 30, 30);
+  --background-light: rgb(50, 50, 50);
 
-  --text-darkmode-default: rgb(146, 146, 146);
-  --text-darkmode-light: rgb(175, 175, 175);
+  --text-default: rgb(146, 146, 146);
+  --text-light: rgb(175, 175, 175);
 
   /** lightmode **/
-  --background-lightmode-dark: rgb(230, 230, 230);
-  --background-lightmode-default: rgb(245, 245, 245);
-  --background-lightmode-light: rgb(255, 255, 255);
+  [data-theme="light"] {
+    --background-dark: rgb(230, 230, 230);
+    --background-default: rgb(245, 245, 245);
+    --background-light: rgb(255, 255, 255);
 
-  --text-lightmode-default: rgb(94, 94, 94);
-  --text-lightmode-dark: rgb(0, 0, 0);
+    --text-default: rgb(94, 94, 94);
+    --text-light: rgb(0, 0, 0);;
+  }
 }

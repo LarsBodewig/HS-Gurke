@@ -8,11 +8,11 @@
 }
 
 .text-default {
-  color: var(--text-darkmode-default);
+  color: var(--text-default);
 }
 
 .text-light {
-  --color: var(--text-darkmode-light);
+  --color: var(--text-light);
 }
 
 .button-turquoise {
@@ -31,6 +31,6 @@
 }
 
 .input-default {
-  --background: var(--background-darkmode-light);
+  --background: var(--background-light);
   height: 30px;
 }
