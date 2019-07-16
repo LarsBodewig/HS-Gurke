@@ -11,7 +11,7 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 :root {
-  --ion-background-color: var(--background-darkmode-dark);
+  --ion-background-color: var(--background-dark);
 }
 
 entry-wrapper {
@@ -19,11 +19,42 @@ entry-wrapper {
 }
 
 ion-menu-button, ion-label {
-  color: var(--text-darkmode-default);
+  color: var(--text-default);
 }
 
 .page-content {
-  background: var(--background-darkmode-default);
-  height: 100%;
+  background: var(--background-default);
+  min-height: 100%;
   padding: 50px 20px;
+}
+
+.post-area {
+  /*
+  display: grid;
+  grid-template-columns: 33.3% 33.3% 33.3%;
+
+  /*grid-template-rows:200px 1fr 100px;*/
+
+  padding: 50px 80px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-column-gap: 10px;
+
+}
+
+.post-content, .post-header {
+  background: var(--background-light);
+}
+
+.post-content {
+  color: var(--text-light);
+}
+
+.post-timestamp {
+  text-transform: uppercase;
+  color: var(--text-default);
+}
+
+.post-author {
+  color: var(--text-light);
 }
