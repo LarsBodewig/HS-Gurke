@@ -28,20 +28,6 @@ ion-menu-button, ion-label {
   padding: 50px 20px;
 }
 
-.post-area {
-  /*
-  display: grid;
-  grid-template-columns: 33.3% 33.3% 33.3%;
-
-  /*grid-template-rows:200px 1fr 100px;*/
-
-  padding: 50px 80px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  grid-column-gap: 10px;
-
-}
-
 .post-content, .post-header {
   background: var(--background-light);
 }
