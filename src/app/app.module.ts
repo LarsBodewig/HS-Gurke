@@ -12,10 +12,13 @@ import { HomeComponent } from './home/home.component';
 import { NearbyComponent } from './nearby/nearby.component';
 import { SidemenuComponent } from './sidemenu/sidemenu.component';
 import { TopicComponent } from './topic/topic.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DataService } from './services/data.service';
 
 @NgModule({
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     EntryModule
@@ -23,7 +26,8 @@ import { TopicComponent } from './topic/topic.component';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    DataService
   ],
   declarations: [
     AppComponent,

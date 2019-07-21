@@ -2,8 +2,36 @@
   <ion-fab vertical="top" horizontal="start" slot="fixed">
     <ion-menu-button></ion-menu-button>
   </ion-fab>
-  <!-- move style to scss -->
-  <div style="background: var(--background-default); height: 100%; padding-top: 50px; padding-left: 20px">
-    <ion-label style="color: var(--text-default);">Test Topic</ion-label>
-  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-lg="4" size-md="6" size-sm="12" *ngFor="let post of posts">
+        <ion-card style="--background: var(--background-light)">
+          <ion-card-header>
+            <ion-grid>
+              <ion-row align-items-center>
+                <ion-col size="auto">
+                  <ion-avatar>
+                    <ion-img [src]="post.avatar"></ion-img>
+                  </ion-avatar>
+                </ion-col>
+                <ion-col>
+                  <div style="color: var(--text-light); size: 2em">{{post.author}} - {{getDate(post.timestamp)}}</div>
+                  <div style="color: var(--text-default); size: 1.5em" *ngIf="post.reply">
+                    <ion-icon name="return-right"></ion-icon> Antwort an {{post.reply}}
+                  </div>
+                  <div style="color: var(--text-default); size: 1.5em" *ngIf="post.retweet">
+                    <ion-icon name="repeat"></ion-icon> Retweet
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-header>
+          <ion-card-content>
+            <div [innerHtml]="post.post"></div>
+            <!--<ion-img [src]="post.media" *ngIf="post.media"></ion-img>-->
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

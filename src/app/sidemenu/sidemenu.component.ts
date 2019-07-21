@@ -36,20 +36,8 @@ export class SidemenuComponent implements OnInit {
     ];
     this.menuFolder = [
       new MenuFolder({
-        title: 'First', url: 'first', items: [
-          { title: 'Facebook', fragment: 'facebook', source: '' }
-        ]
-      }),
-      new MenuFolder({
-        title: 'Second', url: 'second', items: [
-          { title: 'Facebook', fragment: 'facebook', source: '' },
-          { title: 'Twitter', fragment: 'twitter', source: '' },
-          { title: 'Insta', fragment: 'instagram', source: '' }
-        ]
-      }),
-      new MenuFolder({
-        title: 'Third', url: 'third', items: [
-          { title: 'Youtube', fragment: 'youtube', source: '' }
+        title: 'redrobotgt', url: 'redrobotgt', items: [
+          { title: 'Twitter', fragment: 'twitter', source: '' }
         ]
       })
     ]
