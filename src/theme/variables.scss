@@ -76,14 +76,26 @@
   --ion-color-light-tint: #f5f6f9;
 
   /** custom CSS variables **/
-  --background-dark: rgb(18, 18, 18);
-  --background-default: rgb(30, 29, 30);
-  --background-light: rgb(53, 52, 53);
-
-  --text-default: rgb(146, 146, 146);
-  --text-light: rgb(255, 255, 255);
 
   --highlight-turquoise: rgb(47, 115, 111);
   --highlight-orange: rgb(254, 147, 1);
   --highlight-red: rgb(217, 0, 0);
+
+  /** darkmode **/
+  --background-dark: rgb(18, 18, 18);
+  --background-default: rgb(30, 30, 30);
+  --background-light: rgb(50, 50, 50);
+
+  --text-default: rgb(146, 146, 146);
+  --text-light: rgb(175, 175, 175);
+
+  /** lightmode **/
+  [data-theme="light"] {
+    --background-dark: rgb(230, 230, 230);
+    --background-default: rgb(245, 245, 245);
+    --background-light: rgb(255, 255, 255);
+
+    --text-default: rgb(94, 94, 94);
+    --text-light: rgb(0, 0, 0);;
+  }
 }

@@ -10,3 +10,27 @@
 .active-custom-item {
   --color: var(--highlight-orange);
 }
+
+#logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px 0;
+    height: 150px;
+}
+
+.list-item {
+  height: 30px;
+}
+
+.header-item {
+  margin-top: 0px;
+}
+
+.custom-item {
+  margin-top: 0px;
+}
+
+.sidebar {
+  height: calc(100vh - 256px);
+}

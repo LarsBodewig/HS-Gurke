@@ -18,6 +18,29 @@ entry-wrapper {
   height: 100%;
 }
 
-ion-menu-button {
+ion-menu-button, ion-label {
   color: var(--text-default);
+}
+
+.page-content {
+  background: var(--background-default);
+  min-height: 100%;
+  padding: 50px 20px;
+}
+
+.post-content, .post-header {
+  background: var(--background-light);
+}
+
+.post-content {
+  color: var(--text-light);
+}
+
+.post-timestamp {
+  text-transform: uppercase;
+  color: var(--text-default);
+}
+
+.post-author {
+  color: var(--text-light);
 }

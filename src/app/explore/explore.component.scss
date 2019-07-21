@@ -1,0 +1,26 @@
+.post-area {
+  padding: 50px 80px;
+}
+
+.grid {
+ 	display: grid;
+	grid-gap: 10px;
+	grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
+	grid-auto-rows: 10px;
+}
+
+.headline {
+  padding: 0 90px;
+  font-weight: 800;
+  font-size: 30px;
+}
+
+@media only screen and (max-width: 414px) {
+  .post-area {
+    padding: 0 10px;
+  }
+
+  .headline {
+    padding: 0 20px;
+  }
+}

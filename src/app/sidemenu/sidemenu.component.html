@@ -1,27 +1,27 @@
 <ion-header>
   <!-- move style to scss -->
-  <img src="assets/logo.png" style="display: block;margin-left: auto;margin-right: auto;padding-bottom: 60px;height: 150px;">
+  <img src="assets/logo.png" id="logo">
   <ion-list>
-    <ion-item *ngFor="let item of headerItems" lines="none" style="height: 30px">
-      <ion-label class="header-item" [ngClass]="{'active-header-item': routing.url === item.url}" style="margin-top: 0px;" (click)="navigate(item.url)">
+    <ion-item *ngFor="let item of headerItems" lines="none" class="list-item">
+      <ion-label class="header-item" [ngClass]="{'active-header-item': routing.url === item.url}" (click)="navigate(item.url)">
         {{item.title}}</ion-label>
     </ion-item>
   </ion-list>
 </ion-header>
-<ion-content style="height: calc(100vh - 256px)">
+<ion-content class="sidebar">
   <ion-list>
     <ion-item *ngFor="let folder of menuFolder" detail lines="none">
       <ion-grid>
         <ion-row>
           <ion-col>
-            <ion-label class="custom-item" style="margin-top: 0px;" (click)="folder.toggle()">{{folder.title}}</ion-label>
+            <ion-label class="custom-item" (click)="folder.toggle()">{{folder.title}}</ion-label>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
             <ng-container *ngFor="let item of folder.items">
-              <ion-item *ngIf="folder.expanded" style="height: 30px" lines="none">
-                <ion-label class="custom-item" style="margin-top: 0px;" (click)="navigate(folder.url, item.fragment)" [ngClass]="{'active-custom-item': routing.url === folder.url && routing.fragment === item.fragment}">
+              <ion-item *ngIf="folder.expanded" lines="none">
+                <ion-label class="custom-item" (click)="navigate(folder.url, item.fragment)" [ngClass]="{'active-custom-item': routing.url === folder.url && routing.fragment === item.fragment}">
                   {{item.title}}
                 </ion-label>
               </ion-item>
