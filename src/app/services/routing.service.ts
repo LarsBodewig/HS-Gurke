@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NavigationEnd, RouteConfigLoadEnd, RouteConfigLoadStart, Router, UrlTree } from '@angular/router';
+import { NavigationEnd, RouteConfigLoadEnd, RouteConfigLoadStart, Router, UrlTree, ActivatedRoute, Params } from '@angular/router';
 import { MenuController, NavController } from '@ionic/angular';
 import { NavigationOptions } from '@ionic/angular/dist/providers/nav-controller';
 
@@ -14,7 +14,8 @@ export class RoutingService {
   constructor(
     private router: Router,
     private nav: NavController,
-    private menu: MenuController
+    private menu: MenuController,
+    private route: ActivatedRoute
   ) { }
 
   register() {
@@ -70,4 +71,9 @@ export class RoutingService {
     await resolve;
     return Promise.resolve(this.url);
   }
+
+  public getRouteParams(): Params {
+    return this.route.snapshot.params;
+  }
+
 }

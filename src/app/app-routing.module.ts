@@ -10,8 +10,25 @@ import { HomeComponent } from './home/home.component';
 import { NearbyComponent } from './nearby/nearby.component';
 import { TopicComponent } from './topic/topic.component';
 import { TopicGuard } from './guards/topic.guard';
+import { VerifyGuard } from './guards/verify.guard';
 
 const routes: Routes = [
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'home'
+  },
+  {
+    path: 'verify/:token',
+    pathMatch: 'full',
+    redirectTo: 'login',
+    canActivate: [VerifyGuard]
+  },
+  {
+    path: 'terminate',
+    pathMatch: 'full',
+    component: TerminateComponent
+  },
   {
     path: '',
     canActivate: [LoginGuard],
@@ -32,16 +49,6 @@ const routes: Routes = [
         component: RecoverComponent
       },
       {
-        path: 'terminate',
-        pathMatch: 'full',
-        component: TerminateComponent
-      },
-      {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: 'home'
-      },
-      {
         path: 'home',
         pathMatch: 'full',
         component: HomeComponent
@@ -57,7 +64,7 @@ const routes: Routes = [
         component: NearbyComponent
       },
       {
-        path: ':topic',
+        path: '**',
         component: TopicComponent,
         canActivate: [TopicGuard],
       }
