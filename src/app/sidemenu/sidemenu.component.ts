@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
-import { MenuFolder } from '../models/menu-folder';
+import { CustomItem, HeaderItem } from '../models/menu-item';
 import { AccountService } from '../services/account.service';
 import { RoutingService } from '../services/routing.service';
 
@@ -11,11 +11,8 @@ import { RoutingService } from '../services/routing.service';
 })
 export class SidemenuComponent implements OnInit {
 
-  public headerItems: {
-    title: string,
-    url: string
-  }[];
-  public menuFolder: Array<MenuFolder>;
+  public headerItems: HeaderItem[];
+  public customItems: CustomItem[];
 
   constructor(
     private menu: MenuController,
@@ -23,30 +20,19 @@ export class SidemenuComponent implements OnInit {
     private account: AccountService
   ) {
     this.headerItems = [
-      {
-        title: 'Home',
-        url: 'home'
-      },
-      {
-        title: 'Explore',
-        url: 'explore'
-      },
-      {
-        title: 'In deiner Nähe',
-        url: 'nearby'
-      }
+      new HeaderItem('Home', 'home'), 
+      new HeaderItem('Explore', 'explore'), 
+      new HeaderItem('In deiner Nähe', 'nearby')
     ];
     this.account.onUpdate().subscribe(() => {
-      this.menuFolder = <MenuFolder[]>this.account.getPages().filter(entry => {
-        return entry instanceof MenuFolder;
-      });
+      this.customItems = this.account.getItems();
     });
   }
 
   ngOnInit() { }
 
-  navigate(url: string, fragment?: string) {
-    this.routing.navigate('root', url, { fragment: fragment });
+  navigate(url: string) {
+    this.routing.navigate('root', url);
     this.menu.close();
   }
 }

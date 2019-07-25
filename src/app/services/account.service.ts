@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { Account } from '../models/account';
 import { MenuFolder } from '../models/menu-folder';
-import { MenuItem } from '../models/menu-item';
+import { CustomItem, MenuItem } from '../models/menu-item';
 
 @Injectable({
   providedIn: 'root'
@@ -19,12 +19,12 @@ export class AccountService {
 
   public login(data: { email: string, password: string }): Promise<{ granted: boolean, redirect?: string, reason?: string }> {
     this.account = {
-      pages: [
-        new MenuFolder({
-          title: 'redrobotgt', url: 'redrobotgt', items: [
-            { title: 'Twitter', fragment: 'twitter', source: '' }
-          ]
-        })
+      items: [
+        new MenuFolder('Favorites', 'fav', [
+          new MenuFolder('Twitter', 'twitter', [
+            new MenuItem('redrobotgt', 'redrobotgt', '')
+          ])
+        ])
       ]
     };
     this.accountUpdate.next();
@@ -50,8 +50,16 @@ export class AccountService {
     return this.account != undefined;
   }
 
-  public getPages(): Array<MenuFolder | MenuItem> {
-    return this.account.pages;
+  public getItems(): CustomItem[] {
+    return this.account.items;
+  }
+
+  public getPages(): string[] {
+    let pages: string[] = [];
+    for (const item of this.account.items) {
+      pages = pages.concat(item.getPages().map(page => '/' + page));
+    }
+    return pages;
   }
 
   public onUpdate(): Observable<void> {

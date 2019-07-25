@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, CanLoad, Route, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { MenuFolder } from '../models/menu-folder';
 import { AccountService } from '../services/account.service';
 import { RoutingService } from '../services/routing.service';
 
@@ -22,10 +21,8 @@ export class TopicGuard implements CanActivate, CanActivateChild, CanLoad {
     const pages = this.account.getPages();
 
     for (const page of pages) {
-      if (page instanceof MenuFolder) {
-        if (page.url === url) {
-          return true;
-        }
+      if (page === url) {
+        return true;
       }
     }
 

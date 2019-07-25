@@ -15,6 +15,7 @@ import { SidemenuComponent } from './sidemenu/sidemenu.component';
 import { TopicComponent } from './topic/topic.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DataService } from './services/data.service';
+import { ItemComponent } from './sidemenu/item/item.component';
 
 @NgModule({
   imports: [
@@ -35,6 +36,7 @@ import { DataService } from './services/data.service';
     AppComponent,
     HomeComponent,
     SidemenuComponent,
+    ItemComponent,
     ExploreComponent,
     NearbyComponent,
     TopicComponent

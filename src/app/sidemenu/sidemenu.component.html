@@ -10,25 +10,6 @@
 </ion-header>
 <ion-content class="sidebar">
   <ion-list>
-    <ion-item *ngFor="let folder of menuFolder" detail lines="none">
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-            <ion-label class="custom-item" (click)="folder.toggle()">{{folder.title}}</ion-label>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ng-container *ngFor="let item of folder.items">
-              <ion-item *ngIf="folder.expanded" lines="none">
-                <ion-label class="custom-item" (click)="navigate(folder.url, item.fragment)" [ngClass]="{'active-custom-item': routing.url === folder.url && routing.fragment === item.fragment}">
-                  {{item.title}}
-                </ion-label>
-              </ion-item>
-            </ng-container>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-item>
+    <custom-item *ngFor="let item of customItems" [item]="item" [parentUrl]="'/'" [sidemenu]="this"></custom-item>
   </ion-list>
 </ion-content>

@@ -1,29 +1,43 @@
 export interface Item {
   title: string;
-  fragment: string;
-  source: string;
+  url: string;
 }
 
-export class MenuItem implements Item {
+export interface CustomItem extends Item {
+  isFolder(): boolean;
+  getPages(): string[];
+}
+
+export class MenuItem implements CustomItem {
   public title: string;
-  public fragment: string;
+  public url: string;
   public source: string;
 
-  constructor(item?: Item) {
-    if (item) {
-      this.title = item.title;
-      this.fragment = item.fragment;
-      this.source = item.source;
-    }
+  constructor(title: string, url: string, source: string) {
+    this.title = title;
+    this.url = url;
+    this.source = source;
   }
 
-  /*equals(item: Item): boolean {
-    return this.title === item.title
-      && this.fragment === item.fragment
-      && this.source === item.source;
-  }*/
+  isFolder(): boolean {
+    return false;
+  }
 
-  public get() {
+  getPages(): string[] {
+    return [this.url];
+  }
+}
 
+export class HeaderItem implements Item {
+  public title: string;
+  public url: string;
+
+  constructor(title: string, url: string) {
+    this.title = title;
+    this.url = url;
+  }
+
+  navigate(): void {
+    console.log('navigate to ' + this.title);
   }
 }
