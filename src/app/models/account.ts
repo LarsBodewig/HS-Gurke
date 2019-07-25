@@ -1,7 +1,5 @@
-import { MenuFolder } from './menu-folder';
-import { MenuItem } from './menu-item';
-
+import { CustomItem } from './menu-item';
 
 export interface Account {
-    pages: Array<MenuFolder | MenuItem>;
+    items: CustomItem[];
 }

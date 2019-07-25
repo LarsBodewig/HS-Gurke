@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { NavigationEnd, RouteConfigLoadEnd, RouteConfigLoadStart, Router, UrlTree, ActivatedRoute, Params } from '@angular/router';
 import { MenuController, NavController } from '@ionic/angular';
 import { NavigationOptions } from '@ionic/angular/dist/providers/nav-controller';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { NavigationOptions } from '@ionic/angular/dist/providers/nav-controller'
 export class RoutingService {
 
   public url: string;
-  public fragment: string;
+  private urlObserver: Subject<string>;
 
   constructor(
     private router: Router,
@@ -19,6 +20,7 @@ export class RoutingService {
   ) { }
 
   register() {
+    this.urlObserver = new Subject();
     this.router.events.subscribe(event => {
       if (event instanceof RouteConfigLoadStart) {
         this.toggleLandingPage(true);
@@ -28,7 +30,6 @@ export class RoutingService {
       if (event instanceof NavigationEnd) {
         const tree: UrlTree = this.router.parseUrl(event.urlAfterRedirects);
         this.changeUrl(tree.root.children['primary'].segments.join('/'));
-        this.changeFragment(tree.fragment);
         this.enableMenu(this.url);
       }
     });
@@ -49,12 +50,9 @@ export class RoutingService {
     }
   }
 
-  changeFragment(fragment: string) {
-    this.fragment = fragment;
-  }
-
   changeUrl(url: string) {
     this.url = url;
+    this.urlObserver.next(this.url);
   }
 
   public async goBack() {
@@ -79,4 +77,7 @@ export class RoutingService {
     return this.route.snapshot.params;
   }
 
+  public onNavigationEnd(): Observable<string> {
+    return this.urlObserver.asObservable();
+  }
 }

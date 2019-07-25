@@ -1,56 +1,43 @@
-import { Item, MenuItem } from './menu-item';
+import { CustomItem, Item } from './menu-item';
 
-export interface Folder {
-  title: string;
-  url: string;
+export interface CustomFolder extends CustomItem {
   items: Item[];
 }
 
-export class MenuFolder implements Folder {
+export class MenuFolder implements CustomFolder {
   public title: string;
   public url: string;
-  public items: MenuItem[];
-  public expanded: boolean;
+  public items: CustomItem[];
 
-  constructor(folder?: Folder) {
-    this.items = [];
-    if (folder) {
-      this.title = folder.title;
-      this.url = folder.url;
-      for (const item of folder.items) {
-        this.items.push(new MenuItem(item));
-      }
-    }
+  constructor(title: string, url: string, items?: CustomItem[]) {
+    this.title = title;
+    this.url = url;
+    this.items = (items) ? items : [];
   }
 
-  get() {
+  isFolder(): boolean {
+    return true;
+  }
+
+  getPages(): string[] {
+    let pages: string[] = [this.url];
     for (const item of this.items) {
-      item.get();
+      pages = pages.concat(item.getPages().map(page => this.url + '/' + page));
     }
+    return pages;
   }
 
-  public toggle(value?: boolean) {
-    if (value) {
-      this.expanded = value;
-    } else if (this.expanded) {
-      this.expanded = false;
-    } else {
-      this.expanded = true;
-    }
-    return this.expanded;
-  }
-
-  addItem(item: Item): boolean {
-    const rv: boolean = !this.items.some((menuItem: MenuItem): boolean => {
-      return menuItem.fragment === item.fragment;
+  addItem(item: CustomItem): boolean {
+    const rv: boolean = !this.items.some((i: Item): boolean => {
+      return i.url === item.url;
     });
     if (rv) {
-      this.items.push(new MenuItem(item));
+      this.items.push(item);
     }
     return rv;
   }
 
-  removeItem(item: MenuItem): boolean {
+  removeItem(item: CustomItem): boolean {
     const index: number = this.items.indexOf(item);
     const rv: boolean = index >= 0
     if (rv) {
