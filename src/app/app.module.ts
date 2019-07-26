@@ -14,7 +14,7 @@ import { AccountService } from './services/account.service';
 import { SidemenuComponent } from './sidemenu/sidemenu.component';
 import { TopicComponent } from './topic/topic.component';
 import { HttpClientModule } from '@angular/common/http';
-import { DataService } from './services/data.service';
+import { HttpService } from './services/http.service';
 import { ItemComponent } from './sidemenu/item/item.component';
 
 @NgModule({

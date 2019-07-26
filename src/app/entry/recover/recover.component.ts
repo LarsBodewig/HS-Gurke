@@ -39,49 +39,31 @@ export class RecoverComponent implements OnInit {
     this.routing.navigate('root', registerRoute);
   }
 
-  private getFormData(): Promise<{ email: string, code: string, password: string, passwordVerify: string }> {
+  private getFormData(): { email: string, code: string, password: string, passwordVerify: string } {
     const emailControlName: string = 'email';
     const codeControlName: string = 'code';
     const passwordControlName: string = 'password';
     const passwordVerifyControlName: string = 'passwordVerify';
-
-    const emailControl: AbstractControl = this.recoverForm.get(emailControlName);
-    const codeControl: AbstractControl = this.recoverForm.get(codeControlName);
-    const passwordControl: AbstractControl = this.recoverForm.get(passwordControlName);
-    const passwordVerifyControl: AbstractControl = this.recoverForm.get(passwordVerifyControlName);
-    if (!emailControl || !codeControl || !passwordControl || !passwordVerifyControl) {
-      return Promise.reject("FormControlName in RecoverComponent was changed");
-    }
-
-    const emailValue: string = emailControl.value;
-    const codeValue: string = codeControl.value;
-    const passwordValue: string = passwordControl.value;
-    const passwordVerifyValue: string = passwordVerifyControl.value;
-    if (!emailValue || !codeValue || !passwordValue || !passwordVerifyValue) {
-      return Promise.reject("Form validation did not prevent recover call");
-    }
-
-    return Promise.resolve({ email: emailValue, code: codeValue, password: passwordValue, passwordVerify: passwordVerifyValue });
+    const emailValue: string = this.recoverForm.get(emailControlName).value;
+    const codeValue: string = this.recoverForm.get(codeControlName).value;
+    const passwordValue: string = this.recoverForm.get(passwordControlName).value;
+    const passwordVerifyValue: string = this.recoverForm.get(passwordVerifyControlName).value;
+    return { email: emailValue, code: codeValue, password: passwordValue, passwordVerify: passwordVerifyValue };
   }
 
-  async onRecover() {
-    await this.getFormData().then((formData: { email: string, code: string, password: string, passwordVerify: string }) => {
-      return this.account.recover(formData);
-    }).then((resolve: { granted: boolean, reason?: string }) => {
-      if (!resolve.granted) {
-        return Promise.reject(resolve.reason ? resolve.reason : 'Account konnte nicht zurückgesetzt werden');
+  onRecover() {
+    const formData: { email: string, code: string, password: string, passwordVerify: string } = this.getFormData();
+    const recover: Promise<{ granted: boolean, reason?: string }> = this.account.recover(formData);
+    const result: Promise<void> = recover.then(res => {
+      if (res.granted) {
+        this.showAlert(true, 'Melde dich mit deinem neuen Passwort an.');
+        this.navigateLogin();
+      } else {
+        this.showAlert(false, res.reason);
       }
-      // kein Promise benötigt, success direkt zurückgeben
-      return Promise.resolve();
-    }, (reason: any) => {
-      console.log(reason);
-      return Promise.reject('Leider ist ein Fehler beim Zurücksetzen aufgetreten.');
-    }).then(() => {
-      this.showAlert(true, 'Melde dich mit deinem neuen Passwort an.');
-      //navigation nach dialog dismiss wäre besser
-      this.navigateLogin();
-    }, (reason: any) => {
-      this.showAlert(false, reason);
+    }, rej => {
+      console.log('This wasn\'t supposed to happen!');
+      console.log(rej);
     });
   }
 
