@@ -20,9 +20,13 @@ const routes: Routes = [
   },
   {
     path: 'verify/:token',
-    pathMatch: 'full',
-    redirectTo: 'login',
-    canActivate: [VerifyGuard]
+    canActivate: [VerifyGuard],
+    children: [
+      {
+        path: '**',
+        redirectTo: '/login'
+      }
+    ]
   },
   {
     path: 'terminate',

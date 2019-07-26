@@ -47,42 +47,31 @@ export class LoginComponent implements OnInit {
     this.routing.navigate('root', homeRoute);
   }
 
-  private getFormData(): Promise<{ email: string, password: string }> {
+  private getFormData(): { email: string, password: string } {
     const emailControlName: string = 'email';
     const passwordControlName: string = 'password';
-
-    const emailControl: AbstractControl = this.loginForm.get(emailControlName);
-    const passwordControl: AbstractControl = this.loginForm.get(passwordControlName);
-    if (!emailControl || !passwordControl) {
-      return Promise.reject("FormControlName in LoginComponent was changed");
-    }
-
-    const emailValue: string = emailControl.value;
-    const passwordValue: string = passwordControl.value;
-    if (!emailValue || !passwordValue) {
-      return Promise.reject("Form validation did not prevent login call");
-    }
-
-    return Promise.resolve({ email: emailValue, password: passwordValue });
+    const emailValue: string = this.loginForm.get(emailControlName).value;
+    const passwordValue: string = this.loginForm.get(passwordControlName).value;
+    return { email: emailValue, password: passwordValue };
   }
 
-  async onLogin() {
-    await this.getFormData()
-      .then((formData: { email: string, password: string }): Promise<{ granted: boolean, redirect?: string, reason?: string }> => {
-        return this.account.login(formData);
-      })
-      .then((resolve: { granted: boolean, redirect?: string, reason?: string }): Promise<void> => {
-        if (!resolve.granted) {
-          return Promise.reject(resolve.reason ? resolve.reason : 'E-Mail oder Password falsch.');
+  onLogin() {
+    const formData: { email: string, password: string } = this.getFormData();
+    const login: Promise<{ granted: boolean, redirect?: string, reason?: string }> = this.account.login(formData);
+    const result: Promise<void> = login.then(res => {
+      if (res.granted) {
+        if (res.redirect) {
+          this.navigateRedirect(res.redirect);
+        } else {
+          this.navigateHome();
         }
-        if(resolve.redirect){
-          return Promise.resolve(this.navigateRedirect(resolve.redirect));
-        }
-        return Promise.resolve(this.navigateHome());
-      })
-      .catch((reason: any): Promise<void> => {
-        return this.showAlert(reason);
-      });
+      } else {
+        this.showAlert(res.reason);
+      }
+    }, rej => {
+      console.log('This wasn\'t supposed to happen!');
+      console.log(rej);
+    });
   }
 
   private async showAlert(text: string): Promise<void> {
