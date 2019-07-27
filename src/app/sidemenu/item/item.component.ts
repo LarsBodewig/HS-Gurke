@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { CustomItem } from 'src/app/models/menu-item';
+import { Component, Input, OnInit } from '@angular/core';
+import { CustomItem } from 'src/app/models/menu-custom-item';
+import { RoutingService } from 'src/app/services/routing.service';
 import { SidemenuComponent } from '../sidemenu.component';
 
 @Component({
@@ -12,9 +13,20 @@ export class ItemComponent implements OnInit {
   @Input() item: CustomItem;
   @Input() sidemenu: SidemenuComponent;
   @Input() parentUrl: string;
+  public isActive: boolean;
 
-  constructor() { }
+  constructor(private routing: RoutingService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.isActive = '/' + this.routing.url === this.getUrl();
+    this.routing.onNavigationEnd().subscribe(url => this.isActive = '/' + url === this.getUrl());
+  }
 
+  public isFolder(item: CustomItem): boolean {
+    return item.type === 'folder';
+  }
+
+  public getUrl(): string {
+    return this.parentUrl + '/' + this.item.url;
+  }
 }

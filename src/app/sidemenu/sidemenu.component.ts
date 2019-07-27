@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
-import { CustomItem, HeaderItem } from '../models/menu-item';
 import { AccountService } from '../services/account.service';
 import { RoutingService } from '../services/routing.service';
+import { HeaderItem } from '../models/menu-header-item';
+import { CustomItem } from '../models/menu-custom-item';
 
 @Component({
   selector: 'sidemenu',

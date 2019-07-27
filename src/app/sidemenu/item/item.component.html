@@ -2,12 +2,12 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-label class="custom-item" (click)="sidemenu.navigate(parentUrl + '/' + item.url)">{{item.title}}</ion-label>
+        <ion-label class="custom-item" [ngClass]="{'active-custom-item': isActive }" (click)="sidemenu.navigate(getUrl())">{{item.title}}</ion-label>
       </ion-col>
     </ion-row>
-    <ion-row *ngIf="item.isFolder()">
+    <ion-row *ngIf="isFolder(item)">
       <ion-col>
-        <custom-item *ngFor="let subitem of item.items" [item]="subitem" [parentUrl]="parentUrl + '/' + item.url" [sidemenu]="sidemenu">
+        <custom-item *ngFor="let child of item.children" [item]="child" [parentUrl]="parentUrl + '/' + item.url" [sidemenu]="sidemenu">
         </custom-item>
       </ion-col>
     </ion-row>

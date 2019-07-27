@@ -1,5 +1,7 @@
-import { CustomItem } from './menu-item';
+import { Folder } from './menu-folder';
 
 export interface Account {
-    items: CustomItem[];
+    email: string;
+    verified: boolean;
+    items: Folder;
 }
