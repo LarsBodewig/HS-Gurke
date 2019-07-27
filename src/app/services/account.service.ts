@@ -2,8 +2,11 @@ import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { Account } from '../models/account';
-import { CustomItem } from '../models/menu-item';
+import { CustomItem } from '../models/menu-custom-item';
+import { Folder } from '../models/menu-folder';
+import { TwitterItem } from '../models/menu-item-twitter';
 import { HttpService } from './http.service';
+import { TwitterPost } from '../models/post-twitter';
 
 @Injectable({
   providedIn: 'root'
@@ -17,15 +20,6 @@ export class AccountService {
   constructor(private http: HttpService) {
     this.accountUpdate = new Subject();
     this.accountUpdate.subscribe(update => this.account = update);
-    /*this.account = {
-      items: [
-        new MenuFolder('Favorites', 'fav', [
-          new MenuFolder('Twitter', 'twitter', [
-            new MenuItem('redrobotgt', 'redrobotgt', '')
-          ])
-        ])
-      ]
-    };*/
   }
 
   public login(data: { email: string, password: string }): Promise<{ granted: boolean, redirect?: string, reason?: string }> {
@@ -189,15 +183,71 @@ export class AccountService {
   }
 
   public getItems(): CustomItem[] {
-    return this.account.items;
+    return this.account.items.children;
   }
 
   public getPages(): string[] {
-    let pages: string[] = [];
-    for (const item of this.account.items) {
-      pages = pages.concat(item.getPages().map(page => '/' + page));
+    const pages: string[] = [];
+    for (const item of this.account.items.children) {
+      pages.push(...this.recursivePages(item, ''));
     }
     return pages;
+  }
+
+  private recursivePages(item: CustomItem, parentUrl: string): string[] {
+    const pages: string[] = [parentUrl + '/' + item.url];
+    if (item.type === 'folder') {
+      for (const child of (<Folder>item).children) {
+        pages.push(...this.recursivePages(child, parentUrl + '/' + item.url));
+      }
+    }
+    return pages;
+  }
+
+  public getTweets(url: string): Promise<TwitterPost[]> {
+    const sources: string[] = this.getSources(url);
+    let tweets: Promise<TwitterPost[]>[] = [];
+    for (const source of sources) {
+      const get: Promise<HttpResponse<TwitterPost[]>> = this.http.get<TwitterPost[]>(source, HttpService.authToken()).toPromise();
+      const result: Promise<TwitterPost[]> = get.then(res => {
+        return res.body;
+      }, rej => {
+        console.log('Error getting ' + source + ':');
+        console.log(rej);
+        return [];
+      });
+      tweets.push(result);
+    }
+    return Promise.all(tweets).then(twoDim => {
+      let result: TwitterPost[] = [];
+      twoDim.forEach(oneDim => result.push(...oneDim));
+      result.sort((a, b) => {
+        if (a.timestamp < b.timestamp) return 1;
+        if (a.timestamp > b.timestamp) return -1;
+        return 0;
+      });
+      return result;
+    });
+  }
+
+  public getSources(url: string): string[] {
+    const sources: string[] = [];
+    for (const item of this.account.items.children) {
+      sources.push(...this.recursiveSources(item, '/' + url, ''));
+    }
+    return sources;
+  }
+
+  private recursiveSources(item: CustomItem, url: string, parentUrl: string): string[] {
+    const sources: string[] = [];
+    if (item.type === 'folder') {
+      for (const child of (<Folder>item).children) {
+        sources.push(...this.recursiveSources(child, url, parentUrl + '/' + item.url));
+      }
+    } else if ((parentUrl + '/' + item.url).startsWith(url)) { //item.type === 'twitter'
+      sources.push((<TwitterItem>item).source);
+    }
+    return sources;
   }
 
   public onUpdate(): Observable<Account> {

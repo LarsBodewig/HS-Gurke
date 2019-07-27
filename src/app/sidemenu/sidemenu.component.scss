@@ -1,14 +1,9 @@
-.header-item,
-.custom-item {
+.header-item {
   --color: var(--text-default);
 }
 
 .active-header-item {
   --color: var(--highlight-turquoise);
-}
-
-.active-custom-item {
-  --color: var(--highlight-orange);
 }
 
 #logo {
@@ -24,10 +19,6 @@
 }
 
 .header-item {
-  margin-top: 0px;
-}
-
-.custom-item {
   margin-top: 0px;
 }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TwitterPost } from '../models/post-twitter';
-import { HttpService } from '../services/http.service';
+import { AccountService } from '../services/account.service';
 import { RoutingService } from '../services/routing.service';
 
 @Component({
@@ -12,12 +12,12 @@ export class TopicComponent implements OnInit {
 
   public posts: TwitterPost[];
 
-  constructor(private http: HttpService, private routing: RoutingService) { }
+  constructor(private routing: RoutingService, private account: AccountService) { }
 
   ngOnInit() {
     this.routing.onNavigationEnd().subscribe(url => {
-      console.log(this.routing.url);
-      //this.data.getTwitterData().then(data => this.posts = data);
+      this.account.getTweets(url)
+        .then(posts => this.posts = posts);
     });
   }
 

@@ -1,0 +1,11 @@
+.custom-item {
+  --color: var(--text-default);
+}
+
+.active-custom-item {
+  --color: var(--highlight-orange);
+}
+
+.custom-item {
+  margin-top: 0px;
+}
