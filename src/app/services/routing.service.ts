@@ -15,7 +15,6 @@ export class RoutingService {
   constructor(
     private router: Router,
     private nav: NavController,
-    private menu: MenuController,
     private route: ActivatedRoute
   ) { }
 
@@ -30,21 +29,12 @@ export class RoutingService {
       if (event instanceof NavigationEnd) {
         const tree: UrlTree = this.router.parseUrl(event.urlAfterRedirects);
         this.changeUrl(tree.root.children['primary'].segments.join('/'));
-        this.enableMenu(this.url);
       }
     });
   }
 
   toggleLandingPage(activated: boolean) {
     //
-  }
-
-  enableMenu(url: string) {
-    if (url === 'login' || url === 'register') {
-      this.menu.enable(false);
-    } else {
-      this.menu.enable(true);
-    }
   }
 
   changeUrl(url: string) {

@@ -4,6 +4,23 @@
     <ion-menu side="start" swipeGesture="false" type="push">
       <sidemenu></sidemenu>
     </ion-menu>
-    <ion-router-outlet main></ion-router-outlet>
+    <ion-router-outlet main>
+        <ion-tabs>
+            <ion-tab-bar *ngIf="tabsEnabled" slot="bottom">
+              <ion-tab-button tab="home">
+                <ion-icon name="home"></ion-icon>
+              </ion-tab-button>
+              <ion-tab-button tab="explore">
+                <ion-icon name="bulb"></ion-icon>
+              </ion-tab-button>
+              <ion-tab-button tab="nearby">
+                <ion-icon name="compass"></ion-icon>
+              </ion-tab-button>
+              <ion-tab-button tab="interests">
+                <ion-icon name="list"></ion-icon>
+              </ion-tab-button>
+            </ion-tab-bar>
+          </ion-tabs>
+    </ion-router-outlet>
   </ion-split-pane>
 </ion-app>

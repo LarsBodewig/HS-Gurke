@@ -11,6 +11,7 @@ import { NearbyComponent } from './nearby/nearby.component';
 import { TopicComponent } from './topic/topic.component';
 import { TopicGuard } from './guards/topic.guard';
 import { VerifyGuard } from './guards/verify.guard';
+import { SidemenuComponent } from './sidemenu/sidemenu.component';
 
 const routes: Routes = [
   {
@@ -66,6 +67,11 @@ const routes: Routes = [
         path: 'nearby',
         pathMatch: 'full',
         component: NearbyComponent
+      },
+      {
+        path: 'interests',
+        pathMatch: 'full',
+        component: SidemenuComponent
       },
       {
         path: '**',
