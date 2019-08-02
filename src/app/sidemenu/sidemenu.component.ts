@@ -21,8 +21,8 @@ export class SidemenuComponent implements OnInit {
     private account: AccountService
   ) {
     this.headerItems = [
-      new HeaderItem('Home', 'home'), 
-      new HeaderItem('Explore', 'explore'), 
+      new HeaderItem('Home', 'home'),
+      new HeaderItem('Explore', 'explore'),
       new HeaderItem('In deiner Nähe', 'nearby')
     ];
     this.menuFolder = [

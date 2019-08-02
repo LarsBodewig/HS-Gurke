@@ -1,11 +1,14 @@
-export interface TwitterPost {
-  id: String;
-  author: String;
-  source: String;
-  post: String;
+import { Post } from './post';
+
+export interface TwitterPost extends Post {
+  type: string;
+  id: string;
+  author: string;
+  source: string;
+  post: string;
   timestamp: number;
-  reply: String;
+  reply: string;
   retweet: boolean;
-  avatar: String;
-  media: String;
+  avatar: string;
+  media: string;
 }
