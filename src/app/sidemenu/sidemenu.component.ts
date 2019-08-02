@@ -21,12 +21,14 @@ export class SidemenuComponent implements OnInit {
     private account: AccountService
   ) {
     this.headerItems = [
-      new HeaderItem('Home', 'home'), 
-      new HeaderItem('Explore', 'explore'), 
+      new HeaderItem('Home', 'home'),
+      new HeaderItem('Explore', 'explore'),
       new HeaderItem('In deiner Nähe', 'nearby')
     ];
-    this.account.onUpdate().subscribe(() => {
-      this.customItems = this.account.getItems();
+    this.account.onUpdate().subscribe(value => {
+      if (value != null) {
+        this.customItems = this.account.getItems();
+      }
     });
   }
 

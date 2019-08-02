@@ -5,5 +5,17 @@
   <!-- move style to scss -->
   <div class="page-content">
     <ion-label>Test Home</ion-label>
+    <ion-grid>
+      <ion-row>
+        <ion-col size-lg="4" size-md="6" size-sm="12">
+          <ng-container *ngFor="let post of unseen">
+            <ng-container [ngSwitch]="post.type">
+              <item-twitter *ngSwitchCase="'twitter'" [post]="post"></item-twitter>
+              <item-youtube *ngSwitchCase="'youtube'" [post]="post"></item-youtube>
+            </ng-container>
+          </ng-container>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
 </ion-content>

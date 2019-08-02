@@ -1,12 +1,12 @@
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Account } from '../models/account';
 import { CustomItem } from '../models/menu-custom-item';
 import { Folder } from '../models/menu-folder';
 import { TwitterItem } from '../models/menu-item-twitter';
+import { Post } from '../models/post';
 import { HttpService } from './http.service';
-import { TwitterPost } from '../models/post-twitter';
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +15,10 @@ export class AccountService {
 
   private account: Account;
   private redirect: string;
-  private accountUpdate: Subject<Account>;
+  private accountUpdate: BehaviorSubject<Account>;
 
   constructor(private http: HttpService) {
-    this.accountUpdate = new Subject();
+    this.accountUpdate = new BehaviorSubject(null);
     this.accountUpdate.subscribe(update => this.account = update);
   }
 
@@ -204,12 +204,16 @@ export class AccountService {
     return pages;
   }
 
-  public getTweets(url: string): Promise<TwitterPost[]> {
-    const sources: string[] = this.getSources(url);
-    let tweets: Promise<TwitterPost[]>[] = [];
+  public getUnseenPosts(): Post[]{
+    return this.account.unseen;
+  }
+
+  public getPosts(url: string): Promise<Post[]> {
+    const sources: Array<[string, string]> = this.getSources(url);
+    let tweets: Promise<Post[]>[] = [];
     for (const source of sources) {
-      const get: Promise<HttpResponse<TwitterPost[]>> = this.http.get<TwitterPost[]>(source, HttpService.authToken()).toPromise();
-      const result: Promise<TwitterPost[]> = get.then(res => {
+      const get: Promise<HttpResponse<Post[]>> = this.http.get<Post[]>(source[0], HttpService.authToken()).toPromise();
+      const result: Promise<Post[]> = get.then(res => {
         return res.body;
       }, rej => {
         console.log('Error getting ' + source + ':');
@@ -219,7 +223,7 @@ export class AccountService {
       tweets.push(result);
     }
     return Promise.all(tweets).then(twoDim => {
-      let result: TwitterPost[] = [];
+      let result: Post[] = [];
       twoDim.forEach(oneDim => result.push(...oneDim));
       result.sort((a, b) => {
         if (a.timestamp < b.timestamp) return 1;
@@ -230,22 +234,22 @@ export class AccountService {
     });
   }
 
-  public getSources(url: string): string[] {
-    const sources: string[] = [];
+  public getSources(url: string): Array<[string, string]> {
+    const sources: Array<[string, string]> = [];
     for (const item of this.account.items.children) {
       sources.push(...this.recursiveSources(item, '/' + url, ''));
     }
     return sources;
   }
 
-  private recursiveSources(item: CustomItem, url: string, parentUrl: string): string[] {
-    const sources: string[] = [];
+  private recursiveSources(item: CustomItem, url: string, parentUrl: string): Array<[string, string]> {
+    const sources: Array<[string, string]> = [];
     if (item.type === 'folder') {
       for (const child of (<Folder>item).children) {
         sources.push(...this.recursiveSources(child, url, parentUrl + '/' + item.url));
       }
-    } else if ((parentUrl + '/' + item.url).startsWith(url)) { //item.type === 'twitter'
-      sources.push((<TwitterItem>item).source);
+    } else if ((parentUrl + '/' + item.url).startsWith(url)) { //item.type === 'twitter' || 'youtube'
+      sources.push([(<TwitterItem>item).source, item.type]);
     }
     return sources;
   }

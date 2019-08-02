@@ -1,0 +1,20 @@
+<ion-card style="--background: var(--background-light)">
+  <ion-card-header>
+    <ion-grid>
+      <ion-row align-items-center>
+        <ion-col size="auto">
+          <ion-avatar>
+            <ion-img [src]="post.avatar"></ion-img>
+          </ion-avatar>
+        </ion-col>
+        <ion-col>
+          <div style="color: var(--text-light); size: 2em">{{post.author}} - {{getDate(post.timestamp)}}</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-label>{{post.title}}</ion-label>
+    <ion-img [src]="post.thumbnail" *ngIf="post.thumbnail"></ion-img>
+  </ion-card-content>
+</ion-card>
