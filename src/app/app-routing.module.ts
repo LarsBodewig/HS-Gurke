@@ -6,12 +6,13 @@ import { RegisterComponent } from './entry/register/register.component';
 import { TerminateComponent } from './entry/terminate/terminate.component';
 import { ExploreComponent } from './explore/explore.component';
 import { LoginGuard } from './guards/login.guard';
-import { HomeComponent } from './home/home.component';
-import { NearbyComponent } from './nearby/nearby.component';
-import { TopicComponent } from './topic/topic.component';
 import { TopicGuard } from './guards/topic.guard';
 import { VerifyGuard } from './guards/verify.guard';
+import { HomeComponent } from './home/home.component';
+import { NearbyComponent } from './nearby/nearby.component';
+import { SettingsComponent } from './settings/settings.component';
 import { SidemenuComponent } from './sidemenu/sidemenu.component';
+import { TopicComponent } from './topic/topic.component';
 
 const routes: Routes = [
   {
@@ -72,6 +73,11 @@ const routes: Routes = [
         path: 'interests',
         pathMatch: 'full',
         component: SidemenuComponent
+      },
+      {
+        path: 'settings',
+        pathMatch: 'full',
+        component: SettingsComponent
       },
       {
         path: '**',

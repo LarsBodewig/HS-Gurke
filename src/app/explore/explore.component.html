@@ -6,7 +6,10 @@
   </ion-fab>
   <!-- move style to scss -->
   <div class="page-content">
-    <ion-label class="headline">Aktuell Trending</ion-label>
+    <ion-icon name="person" (click)="handleButtonClick($event)" class="profile"></ion-icon>
+    <div class="header-area">
+      <ion-label class="headline">Aktuell Trending</ion-label><a href="#"><ion-icon name="settings" class="settings"></ion-icon></a>
+      </div>
 
     <!-- Wrapper -->
     <div class="post-area">
@@ -131,8 +134,5 @@
         </div>
       </div>
     </div>
-
-    <script src="functions.js"></script>
-
   </div>
 </ion-content>

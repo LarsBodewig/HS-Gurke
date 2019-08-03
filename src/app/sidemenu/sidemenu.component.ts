@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { AccountService } from '../services/account.service';
 import { RoutingService } from '../services/routing.service';
@@ -14,6 +14,14 @@ export class SidemenuComponent implements OnInit {
 
   public headerItems: HeaderItem[];
   public customItems: CustomItem[];
+
+  @ViewChild('interest') myDialog: any; show() {
+    this.myDialog.nativeElement.showModal();
+  }
+
+  close() {
+    this.myDialog.nativeElement.close();
+  }
 
   constructor(
     private menu: MenuController,
@@ -37,5 +45,6 @@ export class SidemenuComponent implements OnInit {
   navigate(url: string) {
     this.routing.navigate('root', url);
     this.menu.close();
+
   }
 }
