@@ -1,6 +1,7 @@
-import { HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpHeaders, HttpResponse, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { AppComponent } from '../app.component';
 import { Account } from '../models/account';
 import { CustomItem } from '../models/menu-custom-item';
 import { Folder } from '../models/menu-folder';
@@ -17,7 +18,7 @@ export class AccountService {
   private redirect: string;
   private accountUpdate: BehaviorSubject<Account>;
 
-  constructor(private http: HttpService) {
+  constructor(private http: HttpService, private httpClient: HttpClient) {
     this.accountUpdate = new BehaviorSubject(null);
     this.accountUpdate.subscribe(update => this.account = update);
   }
@@ -29,34 +30,43 @@ export class AccountService {
     if (data.password.length <= 0) { // min length, numbers?
       return Promise.resolve({ granted: false, reason: 'Passwort fehlt.' });
     }
-    const getLogin: Promise<HttpResponse<{ token: string }>> = this.http.get<{ token: string }>('/account/login', data).toPromise();
-    const result: Promise<{ granted: boolean, redirect?: string, reason?: string }> =
-      getLogin.then(res => {
-        const setToken: Promise<HttpHeaders> = this.http.setToken(res.body);
-        const getSync: Promise<{ granted: boolean, reason?: string, data?: Account }> = setToken.then(res => this.sync());
-        const innerResult: Promise<{ granted: boolean, redirect?: string, reason?: string }> =
-          getSync.then(res => {
-            if (res.granted && res.data) {
-              this.accountUpdate.next(res.data);
-              return { granted: true, redirect: this.getRedirect() };
-            } else {
-              return { granted: false, reason: res.reason };
-            }
-          }, rej => {
-            console.log('This wasn\'t supposed to happen!');
-            console.log(rej);
-            return { granted: false, reason: 'Ein unerwarteter Programmfehler ist aufgetreten.' };
-          });
-        return innerResult;
-      }, rej => {
-        switch (rej.status) {
-          case 503: return { granted: false, reason: 'Ein internes Serverproblem ist aufgetreten, bitte versuche es später wieder.' };
-          case 401: return { granted: false, reason: 'E-Mail-Adresse und Passwort stimmen nicht überein.' };
-          case 500: return { granted: false, reason: 'Es konnte kein Authentifizierungs-Token ausgestellt werden.' };
-          default: return { granted: false, reason: 'Server hat einen unerwarteten Status zurückgegeben.' };
-        }
+    if (AppComponent.testData) {
+      const get = this.httpClient.get<Account>('assets/data/account.json').toPromise()
+      const res = get.then(data => {
+        this.accountUpdate.next(data);
+        return { granted: true, redirect: this.getRedirect() };
       });
-    return result;
+      return res;
+    } else {
+      const getLogin: Promise<HttpResponse<{ token: string }>> = this.http.get<{ token: string }>('/account/login', data).toPromise();
+      const result: Promise<{ granted: boolean, redirect?: string, reason?: string }> =
+        getLogin.then(res => {
+          const setToken: Promise<HttpHeaders> = this.http.setToken(res.body);
+          const getSync: Promise<{ granted: boolean, reason?: string, data?: Account }> = setToken.then(res => this.sync());
+          const innerResult: Promise<{ granted: boolean, redirect?: string, reason?: string }> =
+            getSync.then(res => {
+              if (res.granted && res.data) {
+                this.accountUpdate.next(res.data);
+                return { granted: true, redirect: this.getRedirect() };
+              } else {
+                return { granted: false, reason: res.reason };
+              }
+            }, rej => {
+              console.log('This wasn\'t supposed to happen!');
+              console.log(rej);
+              return { granted: false, reason: 'Ein unerwarteter Programmfehler ist aufgetreten.' };
+            });
+          return innerResult;
+        }, rej => {
+          switch (rej.status) {
+            case 503: return { granted: false, reason: 'Ein internes Serverproblem ist aufgetreten, bitte versuche es später wieder.' };
+            case 401: return { granted: false, reason: 'E-Mail-Adresse und Passwort stimmen nicht überein.' };
+            case 500: return { granted: false, reason: 'Es konnte kein Authentifizierungs-Token ausgestellt werden.' };
+            default: return { granted: false, reason: 'Server hat einen unerwarteten Status zurückgegeben.' };
+          }
+        });
+      return result;
+    }
   }
 
   //pull changes from server
@@ -204,7 +214,7 @@ export class AccountService {
     return pages;
   }
 
-  public getUnseenPosts(): Post[]{
+  public getUnseenPosts(): Post[] {
     return this.account.unseen;
   }
 

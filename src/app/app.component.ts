@@ -16,6 +16,7 @@ export class AppComponent {
   public menuComponent: SidemenuComponent;
   public tabsEnabled: boolean;
   public tabsOverSidemenu: boolean = true;
+  public static testData: boolean = true;
 
   constructor(
     private platform: Platform,
