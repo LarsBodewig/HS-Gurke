@@ -1,5 +1,5 @@
 .post-area {
-  padding: 50px 80px;
+  padding: 50px 0;
 }
 
 .grid {
@@ -10,7 +10,7 @@
 }
 
 .headline {
-  padding: 0 90px;
+  margin: 0 10px;
   font-weight: 800;
   font-size: 30px;
 }
@@ -23,4 +23,42 @@
   .headline {
     padding: 0 20px;
   }
+}
+
+.settings {
+  display: none;
+}
+
+.profile {
+  color: var(--text-default);
+  margin: 0 10px;
+  float: right;
+  border: 1px solid var(--text-default);
+  border-radius: 50%;
+  padding: 5px;
+  -webkit-transition: .2s ease-in, 0.4s ease-out;
+  -moz-transition: .2s ease-in, 0.4s ease-out;
+  -o-transition: .2s ease-in, 0.4s ease-out;
+  -ms-transition: .2s ease-in, 0.4s ease-out;
+  transition: .2s ease-in, 0.4s ease-out;
+}
+
+.profile:hover {
+  color: rgba(255, 255, 255, 0.75);
+  border-color: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+}
+
+.header-area:hover .settings {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 20px;
+  display: inline-block;
+}
+
+.header-area:hover .headline {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+popover-component {
+  --background: white;
 }

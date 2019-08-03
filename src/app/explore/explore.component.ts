@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PopoverController } from '@ionic/angular';
+import { PopoverComponentComponent } from '../popover-component/popover-component.component';
 
 function resizeGridItem(item){
   let grid:Element = document.getElementsByClassName("grid")[0];
@@ -38,12 +40,23 @@ for(var x=0;x<allItems.length;x++){
 
 export class ExploreComponent implements OnInit {
 
-  constructor() { }
+  constructor(public controller:PopoverController) {}
 
   ngAfterViewInit() {
     setTimeout(()=>resizeAllGridItems(),100);
   }
   ngOnInit () {
 
+  }
+
+  async handleButtonClick(ev) {
+    // handleButtonClick(ev, this.controller);
+    let popover = await this.controller.create({
+      component: PopoverComponentComponent,
+      event: ev,
+      translucent: true,
+      showBackdrop: false
+    });
+    return popover.present();
   }
 }
