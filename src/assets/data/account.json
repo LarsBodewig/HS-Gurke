@@ -1,0 +1,264 @@
+{
+    "id": 2,
+    "email": "neoddd84@gmail.com",
+    "hash": "$2a$10$erAcq9DxFsqobv3XB0rbIOMCS8V1HkkDngXjUFy0cKVY/KzsST3M2",
+    "verified": true,
+    "securityCode": "Myvgh8ON07oK85ygWkfALQvI49jXWI66",
+    "items": {
+        "type": "folder",
+        "id": 0,
+        "children": [
+            {
+                "type": "folder",
+                "id": 1,
+                "parentId": 0,
+                "title": "Favoriten",
+                "url": "fav",
+                "children": [
+                    {
+                        "type": "folder",
+                        "id": 3,
+                        "parentId": 1,
+                        "title": "Musiker",
+                        "url": "music",
+                        "children": [
+                            {
+                                "type": "folder",
+                                "id": 6,
+                                "parentId": 3,
+                                "title": "Odmgdia",
+                                "url": "odmgdia",
+                                "children": [
+                                    {
+                                        "type": "twitter",
+                                        "id": 8,
+                                        "folderId": 6,
+                                        "title": "Duzoe",
+                                        "url": "duzoe",
+                                        "lastSeen": "1152907578994827264",
+                                        "source": "/twitter/duzoe/posts"
+                                    },
+                                    {
+                                        "type": "twitter",
+                                        "id": 9,
+                                        "folderId": 6,
+                                        "title": "Dollar John",
+                                        "url": "john",
+                                        "lastSeen": "1155580188522156032",
+                                        "source": "/twitter/dllrjhn/posts"
+                                    },
+                                    {
+                                        "type": "youtube",
+                                        "id": 2,
+                                        "folderId": 6,
+                                        "title": "Odmgdia",
+                                        "url": "odmgdia",
+                                        "lastSeen": "czuDS2CS0ac",
+                                        "source": "/youtube/user/duzoe"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "twitter",
+                                "id": 3,
+                                "folderId": 3,
+                                "title": "Punch Arogunz",
+                                "url": "puncharogunz",
+                                "lastSeen": "1109812437438681089",
+                                "source": "/twitter/puncharogunz/posts"
+                            },
+                            {
+                                "type": "twitter",
+                                "id": 4,
+                                "folderId": 3,
+                                "title": "JCole",
+                                "url": "jcole",
+                                "lastSeen": "1147598257343868929",
+                                "source": "/twitter/jcolenc/posts?replies=false"
+                            },
+                            {
+                                "type": "twitter",
+                                "id": 7,
+                                "folderId": 3,
+                                "title": "Aurora",
+                                "url": "aurora",
+                                "lastSeen": "1154248928642179072",
+                                "source": "/twitter/auroramusic/posts?replies=false"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "folder",
+                        "id": 4,
+                        "parentId": 1,
+                        "title": "Youtuber",
+                        "url": "youtube",
+                        "children": [
+                            {
+                                "type": "twitter",
+                                "id": 2,
+                                "folderId": 4,
+                                "title": "Undoomed_Twitter",
+                                "url": "undoomed",
+                                "lastSeen": "1157571999012741120",
+                                "source": "/twitter/undoomed/posts?replies=false"
+                            },
+                            {
+                                "type": "twitter",
+                                "id": 6,
+                                "folderId": 4,
+                                "title": "Pewdiepie",
+                                "url": "pewdiepie",
+                                "lastSeen": "1156981048275886080",
+                                "source": "/twitter/pewdiepie/posts"
+                            },
+                            {
+                                "type": "youtube",
+                                "id": 1,
+                                "folderId": 4,
+                                "title": "Undoomed_YT",
+                                "url": "undoomedyt",
+                                "lastSeen": "J9A9e_jlls0",
+                                "source": "/youtube/channel/UCTrecbx23AAYdmFHDkci0aQ"
+                            },
+                            {
+                                "type": "youtube",
+                                "id": 3,
+                                "folderId": 4,
+                                "title": "PewdiepieYT",
+                                "url": "pewdiepieyt",
+                                "lastSeen": "qpLFWwo7tL0",
+                                "source": "/youtube/user/pewdiepie"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "folder",
+                "id": 2,
+                "parentId": 0,
+                "title": "Sonstige",
+                "url": "sonstige",
+                "children": [
+                    {
+                        "type": "folder",
+                        "id": 5,
+                        "parentId": 2,
+                        "title": "Twitter",
+                        "url": "twitter",
+                        "children": [
+                            {
+                                "type": "twitter",
+                                "id": 5,
+                                "folderId": 5,
+                                "title": "THQ",
+                                "url": "thq",
+                                "lastSeen": "1157320679567572995",
+                                "source": "/twitter/thqnordic/posts?replies=false"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "twitter",
+                "id": 1,
+                "folderId": 0,
+                "title": "@me",
+                "url": "me",
+                "lastSeen": "615916698688954368",
+                "source": "/twitter/mrkreeves/posts?replies=false"
+            }
+        ]
+    },
+    "unseen": [
+        {
+            "type": "twitter",
+            "id": "1153061167889289218",
+            "author": "Duzoe",
+            "source": "https://twitter.com/Duzoe/status/1153061167889289218?p=v",
+            "post": "Habt ihr geschmaust?",
+            "timestamp": 1563660000000,
+            "reply": "@SkinnySmollz",
+            "retweet": false,
+            "avatar": "https://pbs.twimg.com/profile_images/1072559177971703809/n1znMCQh_normal.jpg"
+        },
+        {
+            "type": "twitter",
+            "id": "1153541878027051009",
+            "author": "dennsnsfuneral",
+            "source": "https://twitter.com/dennsnsfuneral/status/1153541878027051009?p=v",
+            "post": "<a href=\"/Duzoe\" class=\"twitter-atreply dir-ltr\" dir=\"ltr\" data-mentioned-user-id=\"122445906\" data-screenname=\"Duzoe\">@Duzoe</a> immer noch ein Meisterwerk 🎤 \n<a href=\"https://t.co/GPG83tofMl\" data-pre-embedded=\"true\" rel=\"nofollow\" data-entity-id=\"1153541873115521024\" dir=\"ltr\" data-url=\"https://twitter.com/dennsnsfuneral/status/1153541878027051009/photo/1\" data-tco-id=\"GPG83tofMl\" class=\"twitter_external_link dir-ltr tco-link has-expanded-path\" target=\"_top\" data-expanded-path=\"/dennsnsfuneral/status/1153541878027051009/photo/1\">pic.twitter.com/GPG83tofMl</a>",
+            "timestamp": 1563746400000,
+            "retweet": true,
+            "avatar": "https://pbs.twimg.com/profile_images/1150859758649466882/OUWI8F2a_normal.jpg",
+            "media": "https://twitter.com/dennsnsfuneral/status/1153541878027051009/photo/1"
+        },
+        {
+            "type": "twitter",
+            "id": "1153647146085826561",
+            "author": "Duzoe",
+            "source": "https://twitter.com/Duzoe/status/1153647146085826561?p=v",
+            "post": "Es ist so traumhaft und traurig zugleich.",
+            "timestamp": 1563832800000,
+            "reply": "@trapadvisor49",
+            "retweet": false,
+            "avatar": "https://pbs.twimg.com/profile_images/1072559177971703809/n1znMCQh_normal.jpg"
+        },
+        {
+            "type": "twitter",
+            "id": "1155962947530678276",
+            "author": "Duzoe",
+            "source": "https://twitter.com/Duzoe/status/1155962947530678276?p=v",
+            "post": "kennst du haus des geldes john hahah die heissen einfach alle wie städte verrückter zufall oder?",
+            "timestamp": 1564351200000,
+            "reply": "@dllrjhn",
+            "retweet": false,
+            "avatar": "https://pbs.twimg.com/profile_images/1072559177971703809/n1znMCQh_normal.jpg"
+        },
+        {
+            "type": "twitter",
+            "id": "1156272194500141056",
+            "author": "dllrjhn",
+            "source": "https://twitter.com/dllrjhn/status/1156272194500141056?p=v",
+            "post": "so n bisschen schon iwie",
+            "timestamp": 1564437600000,
+            "reply": "@SkinnySmollz",
+            "retweet": false,
+            "avatar": "https://pbs.twimg.com/profile_images/943426488946262017/WlO1VLrs_normal.jpg"
+        },
+        {
+            "type": "twitter",
+            "id": "1156814694520381440",
+            "author": "Duzoe",
+            "source": "https://twitter.com/Duzoe/status/1156814694520381440?p=v",
+            "post": "Ist nicht dein Ernst?",
+            "timestamp": 1564524000000,
+            "reply": "@crystalf44",
+            "retweet": false,
+            "avatar": "https://pbs.twimg.com/profile_images/1072559177971703809/n1znMCQh_normal.jpg"
+        },
+        {
+            "type": "twitter",
+            "id": "1157281915801673729",
+            "author": "LunaticAbsturz",
+            "source": "https://twitter.com/LunaticAbsturz/status/1157281915801673729?p=v",
+            "post": "Jetzt auf junggeblieben Skatepark ein Ollie gespringt zur Seite mit euch",
+            "timestamp": 1564696800000,
+            "retweet": true,
+            "avatar": "https://pbs.twimg.com/profile_images/921676704350900224/9rx0UJRB_normal.jpg"
+        },
+        {
+            "type": "twitter",
+            "id": "1157318388856872961",
+            "author": "LunaticAbsturz",
+            "source": "https://twitter.com/LunaticAbsturz/status/1157318388856872961?p=v",
+            "post": "Junge wenn du Frau bist zeig bitte kurz Arsch hier",
+            "timestamp": 1564761418389,
+            "reply": "@ughvid",
+            "retweet": true,
+            "avatar": "https://pbs.twimg.com/profile_images/921676704350900224/9rx0UJRB_normal.jpg"
+        }
+    ]
+}
