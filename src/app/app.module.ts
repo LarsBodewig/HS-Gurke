@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { IonicModule, IonicRouteStrategy, PopoverController } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EntryModule } from './entry/entry.module';
@@ -13,19 +13,23 @@ import { NearbyComponent } from './nearby/nearby.component';
 import { AccountService } from './services/account.service';
 import { SidemenuComponent } from './sidemenu/sidemenu.component';
 import { TopicComponent } from './topic/topic.component';
+import { PopoverComponentComponent } from './popover-component/popover-component.component';
+import { SettingsComponent } from './settings/settings.component';
+
 
 @NgModule({
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    EntryModule
+    EntryModule,
   ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    AccountService
+    AccountService,
+    PopoverController
   ],
   declarations: [
     AppComponent,
@@ -33,9 +37,13 @@ import { TopicComponent } from './topic/topic.component';
     SidemenuComponent,
     ExploreComponent,
     NearbyComponent,
-    TopicComponent
+    TopicComponent,
+    PopoverComponentComponent,
+    SettingsComponent
   ],
-  entryComponents: [],
+  entryComponents: [
+    PopoverComponentComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,19 @@
+ion-list ion-list-header, ion-list ion-item {
+  color: var(--text-default);
+}
+
+.close-settings-dialog {
+  float: right;
+  color: var(--text-default);
+  cursor: pointer;
+  padding: 10px;
+  -webkit-transition: .2s ease-in, 0.4s ease-out;
+  -moz-transition: .2s ease-in, 0.4s ease-out;
+  -o-transition: .2s ease-in, 0.4s ease-out;
+  -ms-transition: .2s ease-in, 0.4s ease-out;
+  transition: .2s ease-in, 0.4s ease-out;
+}
+
+.close-settings-dialog:hover {
+  color: rgba(255, 255, 255, 0.75);
+}

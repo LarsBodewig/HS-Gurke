@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { NearbyComponent } from './nearby/nearby.component';
 import { TopicComponent } from './topic/topic.component';
 import { TopicGuard } from './guards/topic.guard';
+import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
   {
@@ -55,6 +56,11 @@ const routes: Routes = [
         path: 'nearby',
         pathMatch: 'full',
         component: NearbyComponent
+      },
+      {
+        path: 'settings',
+        pathMatch: 'full',
+        component: SettingsComponent
       },
       {
         path: ':topic',
