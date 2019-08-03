@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { MenuFolder } from '../models/menu-folder';
 import { AccountService } from '../services/account.service';
@@ -15,7 +15,21 @@ export class SidemenuComponent implements OnInit {
     title: string,
     url: string
   }[];
+
+  public footerItems: {
+    title: string,
+    url: string
+  }[];
+
   public menuFolder: Array<MenuFolder>;
+
+  @ViewChild('interest') myDialog: any; show() {
+    this.myDialog.nativeElement.showModal();
+  }
+
+  close() {
+    this.myDialog.nativeElement.close();
+  }
 
   constructor(
     private menu: MenuController,
@@ -36,6 +50,14 @@ export class SidemenuComponent implements OnInit {
         url: 'nearby'
       }
     ];
+
+    this.footerItems = [
+      {
+        title: 'Settings',
+        url: 'settings'
+      }
+    ];
+
     this.menuFolder = [];
     this.account.onUpdate().subscribe(() => {
       this.menuFolder = <MenuFolder[]>this.account.getPages().filter(entry => {
@@ -49,5 +71,6 @@ export class SidemenuComponent implements OnInit {
   navigate(url: string, fragment?: string) {
     this.routing.navigate('root', url, { fragment: fragment });
     this.menu.close();
+
   }
 }

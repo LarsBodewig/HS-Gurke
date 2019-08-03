@@ -1,35 +1,58 @@
-<ion-header>
-  <!-- move style to scss -->
-  <img src="assets/logo.png" id="logo">
-  <ion-list>
-    <ion-item *ngFor="let item of headerItems" lines="none" class="list-item">
-      <ion-label class="header-item" [ngClass]="{'active-header-item': routing.url === item.url}"
+<div class="sidebar">
+  <div class="logo">
+		<img src="assets/logo.png" alt="Logo" width="100%" id="logo">
+	</div>
+
+	<nav class="navigation">
+		<ul>
+			<li *ngFor="let item of headerItems" lines="none" class="list-item"><ion-label class="header-item" [ngClass]="{'active-header-item': routing.url === item.url}"
         (click)="navigate(item.url)">
-        {{item.title}}</ion-label>
-    </ion-item>
-  </ion-list>
-</ion-header>
-<ion-content class="sidebar">
-  <ion-list>
-    <ion-item *ngFor="let folder of menuFolder" detail lines="none" (click)="folder.toggle()">
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-            <ion-label class="custom-item">{{folder.title}}</ion-label>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ng-container *ngFor="let item of folder.items">
-              <ion-item *ngIf="folder.expanded" class="list-item" lines="none">
-                <ion-label class="custom-item" (click)="navigate(folder.url, item.fragment)">
-                  {{item.title}}
-                </ion-label>
-              </ion-item>
-            </ng-container>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-item>
-  </ion-list>
-</ion-content>
+        {{item.title}}</ion-label></li>
+		</ul>
+	</nav>
+
+  <span class="interests-title">Deine Interests</span>
+	<nav class="interests">
+		<ul>
+			<li *ngFor="let folder of menuFolder" (click)="folder.toggle()" class="list-item"><ion-label class="interest-item" [ngClass]="{'active-interest-item': routing.url === folder.url}"
+        (click)="navigate(folder.url)">{{folder.title}}</ion-label></li>
+		</ul>
+	</nav>
+
+  <nav class="mini-menu">
+    <ul>
+      <li (click)="show()" class="mini-menu-item"><ion-icon name="add"></ion-icon> Interest hinzufügen</li>
+      <li class="mini-menu-item"><a routerLink="/settings"><ion-icon name="settings"></ion-icon> Einstellungen</a></li>
+    </ul>
+  </nav>
+
+  <dialog #interest class="create-interest">
+    <ion-label><ion-icon name="close" (click)="close()" class="close-interest-dialog"></ion-icon></ion-label>
+
+    <ion-input placeholder="Interest name" required></ion-input>
+    <ion-input placeholder="URL"></ion-input>
+    <ion-input placeholder="Parent"></ion-input>
+    <ion-list>
+      <ion-radio-group>
+
+        <ion-item>
+          <ion-label><ion-icon name="logo-twitter"></ion-icon> Twitter</ion-label>
+          <ion-radio slot="start" value="twitter" checked></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label><ion-icon name="logo-youtube"></ion-icon> Youtube</ion-label>
+          <ion-radio slot="start" value="youtube"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label><ion-icon name="folder-open"></ion-icon> Folder</ion-label>
+          <ion-radio slot="start" value="folder"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+
+    <ion-button (click)="close()">Submit</ion-button>
+  </dialog>
+
+</div>
