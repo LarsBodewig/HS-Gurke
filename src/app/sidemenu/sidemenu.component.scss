@@ -15,10 +15,32 @@
   text-shadow: 0 0 5px rgba(254, 147, 1, 0.71);
 }
 
+.logo {
+  height: 15%;
+}
+
 #logo {
     display: block;
-    margin: 30px auto;
-    width: 50%;
+    margin: auto;
+    height: 80%;
+}
+
+.navigation {
+  height: 15%;
+}
+
+.interests-title {
+  height: 5%;
+}
+
+.interests {
+  height: 50%;
+}
+
+.interest-list {
+  height: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
 }
 
 .list-item {
@@ -30,7 +52,7 @@
 }
 
 .sidebar {
-  height: calc(100vh - 256px);
+  height: 100vh;
   padding-left: 30px;
   padding-right: 30px;
 }
@@ -54,11 +76,8 @@ ul {
 
 .mini-menu {
   background-color: var(--background-dark);
-  z-index: 1;
-  position: absolute;
-	bottom: 0;
 	width: 100%;
-  padding: 20px 0;
+  height: 15%;
 	font-size: 11px;
 }
 
