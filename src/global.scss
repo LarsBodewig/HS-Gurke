@@ -10,6 +10,11 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 :root {
   --ion-background-color: var(--background-dark);
 }
@@ -25,7 +30,7 @@ ion-menu-button, ion-label {
 .page-content {
   background: var(--background-default);
   min-height: 100%;
-  padding: 50px 20px;
+  padding: 50px 10%;
 }
 
 .post-content, .post-header {
@@ -43,4 +48,21 @@ ion-menu-button, ion-label {
 
 .post-author {
   color: var(--text-light);
+}
+
+.header-md:after {
+    left: 0;
+    bottom: 0;
+    background-position: left 0 top 0;
+    position: absolute;
+    width: 0;
+    height: 0;
+    background-image: none;
+    background-repeat: no-repeat;
+    content: "";
+  }
+
+// Sidemenu width
+.split-pane-md.split-pane-visible > .split-pane-side {
+  max-width: 20vw;
 }
