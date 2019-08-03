@@ -3,7 +3,13 @@
 }
 
 .active-header-item {
-  --color: var(--highlight-turquoise);
+  color: rgb(77, 145, 141);
+  text-shadow: 0 0 10px rgba(47, 115, 111, 0.71);
+}
+
+.active-interest-item {
+  color: rgb(254, 177, 31);
+  text-shadow: 0 0 5px rgba(254, 147, 1, 0.71);
 }
 
 .active-custom-item {
