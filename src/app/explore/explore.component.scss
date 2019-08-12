@@ -49,16 +49,6 @@
   cursor: pointer;
 }
 
-.header-area:hover .settings {
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 20px;
-  display: inline-block;
-}
-
-.header-area:hover .headline {
-  color: rgba(255, 255, 255, 0.75);
-}
-
 popover-component {
   --background: white;
 }

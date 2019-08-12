@@ -3,36 +3,31 @@
 		<img src="assets/logo.png" alt="Logo" id="logo">
 	</div>
 
-  <nav class="navigation">
-    <ul>
-      <li *ngFor="let item of headerItems" lines="none" class="list-item">
-        <ion-label class="header-item" [ngClass]="{'active-header-item': routing.url === item.url}" (click)="navigate(item.url)">
-          {{item.title}}</ion-label>
-      </li>
-    </ul>
-  </nav>
+  <ul class="navigation">
+    <li *ngFor="let item of headerItems" lines="none" class="list-item">
+      <ion-label class="header-item" [ngClass]="{'active-header-item': routing.url === item.url}" (click)="navigate(item.url)">
+        {{item.title}}</ion-label>
+    </li>
+  </ul>
+
 
   <span class="interests-title">Deine Interests</span>
-  <nav class="interests">
-    <ul>
-      <li *ngFor="let item of customItems">
-        <custom-item [item]="item" [parentUrl]="''" [sidemenu]="this" class="list-item"></custom-item>
-        <!--<ion-label class="interest-item" [ngClass]="{'active-interest-item': routing.url === folder.url}"
-        (click)="navigate(folder.url)">{{folder.title}}</ion-label>(click)="folder.toggle()"-->
-      </li>
-    </ul>
-  </nav>
+  <ul class="interests">
+    <li *ngFor="let item of customItems">
+      <custom-item [item]="item" [parentUrl]="''" [sidemenu]="this" class="list-item"></custom-item>
+      <!--<ion-label class="interest-item" [ngClass]="{'active-interest-item': routing.url === folder.url}"
+      (click)="navigate(folder.url)">{{folder.title}}</ion-label>(click)="folder.toggle()"-->
+    </li>
+  </ul>
 
-  <nav class="mini-menu">
-    <ul>
-      <li (click)="show()" class="mini-menu-item">
-        <ion-icon name="add"></ion-icon> Interest hinzufügen
-      </li>
-      <li class="mini-menu-item"><a routerLink="/settings">
-          <ion-icon name="settings"></ion-icon> Einstellungen
-        </a></li>
-    </ul>
-  </nav>
+  <ul class="mini-menu">
+    <li (click)="show()" class="mini-menu-item">
+      <ion-icon name="add"></ion-icon> Interest hinzufügen
+    </li>
+    <li class="mini-menu-item"><a routerLink="/settings">
+        <ion-icon name="settings"></ion-icon> Einstellungen
+      </a></li>
+  </ul>
 
   <dialog #interest class="create-interest">
     <ion-label>
