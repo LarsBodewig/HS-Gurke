@@ -16,7 +16,7 @@ a {
 }
 
 :root {
-  --ion-background-color: var(--background-dark);
+  --ion-background-color: var(--background-default);
 }
 
 entry-wrapper {
@@ -67,12 +67,16 @@ ion-menu-button, ion-label {
   max-width: 20vw;
 }
 
-.menu-tabs ion-tab-bar {
+.menu-tabs {
+  height: 10%;
+}
+
+.menu-tabs {
   display: none;
 }
 
 @media only screen and (max-width: 767px) {
-  .menu-tabs ion-tab-bar {
+  .menu-tabs {
     display: inherit;
   }
 }

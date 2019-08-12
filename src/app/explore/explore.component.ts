@@ -43,7 +43,7 @@ export class ExploreComponent implements OnInit {
   constructor(public controller:PopoverController) {}
 
   ngAfterViewInit() {
-    setTimeout(()=>resizeAllGridItems(),100);
+    setTimeout(()=>resizeAllGridItems(),300);
   }
   ngOnInit () {
 

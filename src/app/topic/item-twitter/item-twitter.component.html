@@ -1,4 +1,4 @@
-<ion-card style="--background: var(--background-light)">
+<!-- <ion-card style="--background: var(--background-light)">
   <ion-card-header>
     <ion-grid>
       <ion-row align-items-center>
@@ -22,5 +22,14 @@
   <ion-card-content>
     <div [innerHtml]="post.post"></div>
     <!--<ion-img [src]="post.media" *ngIf="post.media"></ion-img>-->
-  </ion-card-content>
-</ion-card>
+  <!-- </ion-card-content>
+</ion-card> -->
+
+    <ion-card-header class="post-header">
+      <ion-card-subtitle class="post-timestamp">{{getDate(post.timestamp)}}</ion-card-subtitle>
+      <ion-card-title class="post-author">{{post.author}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content class="post-content">
+      <div [innerHtml]="post.post"></div>
+    </ion-card-content>
