@@ -14,8 +14,6 @@ export class AppComponent {
 
   public loadingRouteConfig: boolean;
   public menuComponent: SidemenuComponent;
-  public tabsEnabled: boolean;
-  public tabsOverSidemenu: boolean = true;
   public static testData: boolean = true;
 
   constructor(
@@ -37,13 +35,8 @@ export class AppComponent {
     this.routing.onNavigationEnd().subscribe(url => {
       if (url === 'login' || url === 'register' || url === 'recover' || url === 'terminate') {
         this.menu.enable(false);
-        this.tabsEnabled = false;
       } else {
-        if (this.tabsOverSidemenu) {
-          this.tabsEnabled = true;
-        } else {
-          this.menu.enable(true);
-        }
+        this.menu.enable(true);
       }
     })
   }
